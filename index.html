@@ -8,7 +8,7 @@
     :root {
       --bg: #f6f1e8;
       --bg2: #fbf8f3;
-      --card: rgba(255,255,255,0.94);
+      --card: rgba(255,255,255,0.95);
       --card-strong: #ffffff;
       --border: #e8dfd1;
       --text: #1f2937;
@@ -24,12 +24,13 @@
       --radius: 24px;
       --field: #fffdfb;
       --toggle: #f2e6d8;
+      --subtle: #f8f2ea;
     }
 
     body.dark {
       --bg: #151617;
       --bg2: #1d2023;
-      --card: rgba(34, 37, 40, 0.94);
+      --card: rgba(34, 37, 40, 0.95);
       --card-strong: #24282c;
       --border: #3a4046;
       --text: #f1f3f5;
@@ -44,6 +45,7 @@
       --shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
       --field: #1d2125;
       --toggle: #30281f;
+      --subtle: #202427;
     }
 
     * { box-sizing: border-box; }
@@ -64,7 +66,7 @@
     }
 
     .page {
-      max-width: 1120px;
+      max-width: 1140px;
       margin: 0 auto;
       padding: 28px 18px 80px;
     }
@@ -91,12 +93,17 @@
       letter-spacing: 0.02em;
     }
 
-    h1, h2, h3 { margin-top: 0; line-height: 1.2; }
+    h1, h2, h3, h4 {
+      margin-top: 0;
+      line-height: 1.2;
+    }
+
     h1 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 14px; }
     h2 { font-size: clamp(1.45rem, 2.2vw, 2rem); margin-bottom: 10px; }
     h3 { font-size: 1.15rem; margin-bottom: 8px; }
-    p { margin: 0 0 14px 0; }
+    h4 { font-size: 1rem; margin-bottom: 8px; }
 
+    p { margin: 0 0 14px 0; }
     .small { font-size: 0.96rem; color: var(--muted); }
 
     .info-strip {
@@ -146,12 +153,16 @@
     button:hover { transform: translateY(-1px); }
     button:active { transform: translateY(0); }
 
-    button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible {
       outline: 3px solid #b98b54;
       outline-offset: 2px;
     }
 
     .btn-primary { background: var(--accent); color: white; }
+
     .btn-secondary {
       background: var(--accent-soft);
       color: var(--text);
@@ -202,12 +213,13 @@
 
     .chooser-box,
     .track-summary,
+    .option-card,
+    .group-box,
     .source-card,
-    .entry-card {
+    .summary-output {
       background: var(--card-strong);
       border: 1px solid var(--border);
       border-radius: 22px;
-      padding: 22px;
     }
 
     .card {
@@ -241,9 +253,14 @@
       gap: 8px;
     }
 
-    label { font-weight: 700; font-size: 0.98rem; }
+    label {
+      font-weight: 700;
+      font-size: 0.98rem;
+    }
 
-    input, textarea, select {
+    input,
+    textarea,
+    select {
       width: 100%;
       border: 1px solid color-mix(in srgb, var(--border) 75%, #d9cdbc 25%);
       border-radius: 14px;
@@ -254,33 +271,10 @@
       font-family: inherit;
     }
 
-    textarea { min-height: 110px; resize: vertical; }
-
-    .entry-list {
-      display: grid;
-      gap: 16px;
-      margin-top: 16px;
+    textarea {
+      min-height: 96px;
+      resize: vertical;
     }
-
-    .entry-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: start;
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-
-    .entry-title { font-size: 1.05rem; font-weight: 700; margin: 0; }
-
-    .remove-btn {
-      background: var(--danger-bg);
-      color: var(--danger-text);
-      border: 1px solid color-mix(in srgb, var(--border) 55%, #edd0c7 45%);
-      font-size: 0.92rem;
-      padding: 10px 14px;
-    }
-
-    .helper { color: var(--muted); font-size: 0.92rem; margin-top: -2px; }
 
     .path-pill {
       display: inline-flex;
@@ -295,15 +289,15 @@
       font-size: 0.92rem;
     }
 
-    .summary-box { padding: 24px; margin-top: 18px; }
+    .summary-box {
+      padding: 24px;
+      margin-top: 18px;
+    }
 
     .summary-output {
       white-space: pre-wrap;
-      background: var(--card-strong);
-      border: 1px solid var(--border);
-      border-radius: 18px;
       padding: 18px;
-      min-height: 180px;
+      min-height: 220px;
     }
 
     .progress {
@@ -329,6 +323,88 @@
       transition: width 0.2s ease;
     }
 
+    .option-list {
+      display: grid;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .option-card {
+      padding: 22px;
+    }
+
+    .option-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .option-title {
+      margin: 0;
+      font-size: 1.08rem;
+      font-weight: 700;
+    }
+
+    .group-stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .group-box {
+      padding: 18px;
+      background: color-mix(in srgb, var(--card-strong) 82%, var(--subtle) 18%);
+    }
+
+    .group-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      font-size: 0.86rem;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--card-strong) 55%, #f6eadc 45%);
+      color: var(--accent-2);
+    }
+
+    .source-card {
+      padding: 16px;
+      margin-top: 16px;
+      background: color-mix(in srgb, var(--card-strong) 86%, #fbf5ee 14%);
+    }
+
+    .source-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .source-item {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 14px;
+      background: var(--card-strong);
+    }
+
+    .source-item-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .source-item-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .helper {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
     .source-warning {
       background: color-mix(in srgb, var(--card-strong) 74%, #fff0de 26%);
       border: 1px solid color-mix(in srgb, var(--border) 55%, #e7c297 45%);
@@ -344,40 +420,81 @@
     }
 
     .mini-checklist li { margin-bottom: 8px; }
+
+    .remove-btn {
+      background: var(--danger-bg);
+      color: var(--danger-text);
+      border: 1px solid color-mix(in srgb, var(--border) 55%, #edd0c7 45%);
+      font-size: 0.92rem;
+      padding: 9px 14px;
+    }
+
     .print-only { display: none; }
 
     @media (max-width: 900px) {
       .sticky-tools { grid-template-columns: 1fr; }
       .field-grid { grid-template-columns: 1fr; }
       .page { padding-left: 14px; padding-right: 14px; }
+      .option-head,
+      .source-item-head { flex-direction: column; }
     }
 
     @media print {
-      body, body.dark {
+      body,
+      body.dark {
         background: white !important;
         color: black !important;
         font-size: 12pt;
       }
-      .hero, .card, .summary-box, .sticky-tools {
+
+      .hero,
+      .card,
+      .summary-box,
+      .sticky-tools,
+      .option-card,
+      .group-box,
+      .source-card,
+      .summary-output,
+      .source-item {
         background: white !important;
-        box-shadow: none;
-        border: 1px solid #ccc;
+        box-shadow: none !important;
+        border: 1px solid #cfcfcf !important;
       }
+
       .sticky-tools,
       .track-grid,
-      .helper-screen,
       .screen-only,
       .remove-btn,
-      .add-entry-btn,
-      #trackChooserNote,
-      #part2IntroDynamic,
-      #part3GradPromptWrapper,
-      #part3FieldNote {
+      .add-source-btn,
+      .helper-screen,
+      #trackChooserNote {
         display: none !important;
       }
+
       .print-only { display: block; }
-      .page { max-width: 100%; padding: 0; }
-      textarea, input, select { border: 1px solid #ccc; background: white !important; color: black !important; }
+
+      .page {
+        max-width: 100%;
+        padding: 0;
+      }
+
+      textarea,
+      input,
+      select {
+        border: 1px solid #ccc !important;
+        background: white !important;
+        color: black !important;
+      }
+
+      .summary-box {
+        page-break-inside: avoid;
+      }
+
+      .option-card,
+      .group-box,
+      .source-item {
+        page-break-inside: avoid;
+      }
     }
   </style>
 </head>
@@ -386,10 +503,11 @@
     <section class="hero">
       <p class="eyebrow">ENG 101 Research Essay · Week 1</p>
       <h1>Career Path Timeline Worksheet · Week 1</h1>
-      <p>This page covers the first part of your research essay planning. This week is focused on sections 1–3 of the original worksheet: your current academic standing, a comparison of real next-step programs or pathways, and the highest possible level of education, training, certification, or advancement in the field.</p>
+      <p>This page covers the first part of your research essay planning. This week is focused on sections 1–3 of the original worksheet: your current academic standing, a comparison of real next-step programs or pathways, and the highest possible level of education, training, certification, license, rank, or advancement in the field.</p>
+
       <div class="info-strip">
         <div class="note">
-          <strong>Important source rule:</strong> when you record cost, funding, scholarships, tuition, aid, deadlines, or admissions requirements, get that information from the actual school, program, branch, training center, union, or organization page whenever possible. Do not rely only on a general career overview page.
+          <strong>Important source rule:</strong> when you record cost, funding, scholarships, tuition, aid, deadlines, or admissions requirements, get that information from the actual school, program, branch, training center, union, or organization page whenever possible.
         </div>
         <div class="note">
           <strong>Specific links only:</strong> save the exact webpage title and the exact page-specific link where you found your information. Do not paste only a homepage or general website link.
@@ -398,6 +516,7 @@
           <strong>Saving your work:</strong> this page saves your writing in this browser on this device. You should still use the PDF, copy, or download buttons before you leave the page.
         </div>
       </div>
+
       <div class="progress" aria-hidden="true">
         <div><span id="prog1"></span></div>
         <div><span id="prog2"></span></div>
@@ -417,16 +536,16 @@
     <section class="card">
       <span class="section-tag">Choose your track</span>
       <h2>Which path best fits what you want to research right now?</h2>
-      <p class="small">You are not locking yourself into a life decision. You are choosing a path to research for this assignment so you can gather the kind of information needed for the opening sections of your essay.</p>
+      <p class="small">You are not locking yourself into a life decision. You are choosing one path to research for this assignment so you can gather the information needed for the opening sections of your essay.</p>
 
       <div class="grid track-grid" id="trackGrid" role="radiogroup" aria-label="Career research track options">
         <div class="track-option" data-track="transfer" tabindex="0" role="radio" aria-checked="false">
           <div class="track-title">Transfer / university path</div>
-          <div class="small">Compare bachelor’s programs and then research how far the field can go after that.</div>
+          <div class="small">Compare real bachelor’s programs and then look at advanced education in the field.</div>
         </div>
         <div class="track-option" data-track="grad" tabindex="0" role="radio" aria-checked="false">
           <div class="track-title">Graduate or professional school path</div>
-          <div class="small">Compare bachelor’s paths that lead into graduate or professional education.</div>
+          <div class="small">Compare bachelor’s paths that connect to graduate or professional study.</div>
         </div>
         <div class="track-option" data-track="trades" tabindex="0" role="radio" aria-checked="false">
           <div class="track-title">Trades / apprenticeship / licensing path</div>
@@ -434,7 +553,7 @@
         </div>
         <div class="track-option" data-track="military" tabindex="0" role="radio" aria-checked="false">
           <div class="track-title">Military path</div>
-          <div class="small">Compare real military entry and training pathways and long-term advancement options.</div>
+          <div class="small">Compare real military entry and training paths and later advancement options.</div>
         </div>
         <div class="track-option" data-track="business" tabindex="0" role="radio" aria-checked="false">
           <div class="track-title">Business / entrepreneur path</div>
@@ -446,7 +565,7 @@
         </div>
       </div>
 
-      <div id="trackChooserNote" class="chooser-box hidden" style="margin-top: 18px;">
+      <div id="trackChooserNote" class="chooser-box hidden" style="margin-top: 18px; padding: 22px;">
         <h3>Choose one path to explore for this assignment</h3>
         <p>You do not need to know your forever career yet. Pick one path that seems interesting, realistic, useful, or worth learning more about so you can complete this week’s research.</p>
         <div class="field-grid">
@@ -482,7 +601,7 @@
 
     <section class="card hidden" id="trackSummaryCard">
       <span class="section-tag">Your selected track</span>
-      <div class="track-summary">
+      <div class="track-summary" style="padding: 22px;">
         <div class="path-pill" id="currentTrackPill">No track selected yet</div>
         <p id="currentTrackDescription" style="margin-top: 14px;">Choose a track above to begin.</p>
       </div>
@@ -492,6 +611,7 @@
       <span class="section-tag">Section 1</span>
       <h2>Current Academic Standing</h2>
       <p class="small">Start by explaining where you are now. This information helps set up the opening of your essay.</p>
+
       <div class="field-grid">
         <div class="field">
           <label for="currentProgram">Program name</label>
@@ -510,6 +630,7 @@
           <input id="currentStage" data-save type="text" placeholder="Example: first year, finishing prerequisites, exploring options" />
         </div>
       </div>
+
       <div class="field-grid one-col" style="margin-top: 16px;">
         <div class="field">
           <label for="skillsHave">Key courses, experiences, or skills gained so far</label>
@@ -534,17 +655,18 @@
       <span class="section-tag">Section 2</span>
       <h2 id="part2Title">Program Comparison</h2>
       <p class="small" id="part2Intro">Compare real next-step programs or pathways you might actually attend or pursue.</p>
-      <div class="source-warning" id="part2Warning">
-        <strong>For this section:</strong> compare real schools, programs, branches, organizations, unions, training centers, or other actual pathways. Try to get admissions, cost, and scholarship or aid information from their own pages, not just from a general overview site.
+
+      <div class="source-warning">
+        <strong>For this section:</strong> compare real schools, programs, branches, organizations, unions, training centers, or other actual pathways.
         <ul class="mini-checklist">
           <li>Use the exact page title.</li>
           <li>Use the exact page-specific link.</li>
           <li>Do not paste only a homepage.</li>
-          <li>For cost or funding, look for tuition, financial aid, scholarship, or admissions pages from the actual institution or organization.</li>
+          <li>For cost, funding, deadlines, or admissions, try to use the actual institution or organization page.</li>
         </ul>
       </div>
-      <div id="part2Entries" class="entry-list"></div>
-      <button class="btn-secondary add-entry-btn" type="button" id="addPart2Btn">Add another option</button>
+
+      <div id="part2Options" class="option-list"></div>
     </section>
 
     <section class="card hidden" id="part3Card">
@@ -553,75 +675,16 @@
       <p class="small" id="part3Intro">Look beyond the entry-level version of this career and research how far this field can go.</p>
 
       <div class="source-warning">
-        <strong>For this section:</strong> if you are recording cost, tuition, scholarships, assistantships, grants, financial aid, or program funding, try to get that information from the actual school, program, or organization page connected to that higher level.
+        <strong>For this section:</strong> if you record cost, tuition, scholarships, assistantships, financial aid, grants, paid training, benefits, or exam fees, try to use the actual school, program, organization, licensing body, union, or government page connected to that higher level.
       </div>
 
-      <div class="field-grid one-col">
-        <div class="field">
-          <label for="highestLevel">What is the highest possible level of education, training, certification, license, rank, or advancement in this field?</label>
-          <textarea id="highestLevel" data-save></textarea>
-        </div>
-        <div class="field">
-          <label for="highestLevelSteps">What steps usually come before that highest level?</label>
-          <textarea id="highestLevelSteps" data-save></textarea>
-        </div>
-        <div class="field" id="part3GradPromptWrapper">
-          <label for="gradExists">Does graduate study exist in this field?</label>
-          <select id="gradExists" data-save>
-            <option value="">Select one</option>
-            <option>Yes</option>
-            <option>No</option>
-            <option>Maybe or only in some areas</option>
-          </select>
-          <div class="helper" id="part3FieldNote">For some tracks, this may be less important than licenses, certifications, or advanced training.</div>
-        </div>
-        <div class="field">
-          <label for="gradOrAlternative">If graduate study exists, what kind is it? If it does not, what seems more important instead?</label>
-          <textarea id="gradOrAlternative" data-save></textarea>
-        </div>
-        <div class="field">
-          <label for="fundingWithinP3">What did you find out about the cost of reaching this higher level, and how people pay for or access it?</label>
-          <textarea id="fundingWithinP3" data-save placeholder="Examples: tuition, scholarships, financial aid, assistantships, paid apprenticeships, GI Bill, union support, grants, application fees, exam fees"></textarea>
-        </div>
+      <div id="part3Options" class="option-list"></div>
+
+      <div class="group-box" style="margin-top: 18px;">
+        <span class="group-label">Your reflection</span>
         <div class="field">
           <label for="highestLevelReflection">What surprised you most when you researched the highest possible level of this path?</label>
           <textarea id="highestLevelReflection" data-save></textarea>
-        </div>
-      </div>
-
-      <div class="source-card" style="margin-top: 18px;">
-        <h3>Source for Section 3</h3>
-        <p class="helper">Use the exact page title and the exact page-specific link. For funding or cost information, use the actual program, financial aid, scholarship, tuition, or organizational page whenever possible.</p>
-        <div class="field-grid">
-          <div class="field">
-            <label for="p3SourceTitle">Exact webpage title</label>
-            <input id="p3SourceTitle" data-save type="text" />
-          </div>
-          <div class="field">
-            <label for="p3SourceSite">School, institution, or organization name</label>
-            <input id="p3SourceSite" data-save type="text" />
-          </div>
-          <div class="field">
-            <label for="p3SourceLink">Exact page-specific link</label>
-            <input id="p3SourceLink" data-save type="url" placeholder="https://" />
-          </div>
-          <div class="field">
-            <label for="p3SourceType">What kind of page is this?</label>
-            <select id="p3SourceType" data-save>
-              <option value="">Select one</option>
-              <option>Program page</option>
-              <option>Admissions page</option>
-              <option>Tuition or cost page</option>
-              <option>Financial aid or scholarship page</option>
-              <option>Certification or licensing page</option>
-              <option>Military benefits or training page</option>
-              <option>Other organization page</option>
-            </select>
-          </div>
-          <div class="field" style="grid-column: 1 / -1;">
-            <label for="p3SourceInfo">What information did this page give you?</label>
-            <input id="p3SourceInfo" data-save type="text" />
-          </div>
         </div>
       </div>
     </section>
@@ -635,27 +698,36 @@
     </section>
   </div>
 
-  <template id="entryTemplate">
-    <div class="entry-card">
-      <div class="entry-header">
+  <template id="optionCardTemplate">
+    <div class="option-card">
+      <div class="option-head">
         <div>
-          <p class="entry-title">Option <span class="entry-number"></span></p>
-          <p class="helper entry-helper">Compare a real next-step option.</p>
+          <p class="option-title option-heading"></p>
+          <p class="helper option-helper"></p>
         </div>
-        <button class="remove-btn" type="button">Remove</button>
       </div>
-      <div class="field-grid entry-fields"></div>
-      <div class="source-card" style="margin-top: 16px;">
-        <h3>Source for this option</h3>
-        <p class="helper">Use the exact page title and the exact page-specific link. For cost, tuition, scholarships, funding, deadlines, or admissions requirements, try to use the actual institution or organization page.</p>
-        <div class="field-grid source-fields"></div>
+
+      <div class="group-stack">
+        <div class="group-box basic-group"></div>
+        <div class="group-box cost-group"></div>
       </div>
     </div>
   </template>
 
+  <template id="sourceItemTemplate">
+    <div class="source-item">
+      <div class="source-item-head">
+        <p class="source-item-title">Source <span class="source-number"></span></p>
+        <button class="remove-btn remove-source-btn" type="button">Remove</button>
+      </div>
+      <div class="field-grid source-fields"></div>
+    </div>
+  </template>
+
   <script>
-    const STORAGE_KEY = 'careerPathWeek1_v2';
-    const THEME_KEY = 'careerPathWeek1_theme';
+    const STORAGE_KEY = 'careerPathWeek1_v4';
+    const THEME_KEY = 'careerPathWeek1_theme_v4';
+
     const trackGrid = document.getElementById('trackGrid');
     const trackSummaryCard = document.getElementById('trackSummaryCard');
     const currentTrackPill = document.getElementById('currentTrackPill');
@@ -663,143 +735,244 @@
     const chooserBox = document.getElementById('trackChooserNote');
     const applyNotsurePathBtn = document.getElementById('applyNotsurePath');
     const saveStatus = document.getElementById('saveStatus');
-    const part2Entries = document.getElementById('part2Entries');
+    const part1Card = document.getElementById('part1Card');
     const part2Card = document.getElementById('part2Card');
     const part3Card = document.getElementById('part3Card');
-    const part1Card = document.getElementById('part1Card');
+    const part2Options = document.getElementById('part2Options');
+    const part3Options = document.getElementById('part3Options');
     const summaryOutput = document.getElementById('summaryOutput');
-    const addPart2Btn = document.getElementById('addPart2Btn');
     const themeToggle = document.getElementById('themeToggle');
 
     const tracks = {
       transfer: {
         label: 'Transfer / university path',
-        description: 'This version stays close to the original worksheet by comparing real bachelor’s programs, then asking how far the field can go after that.',
-        part2Title: 'Transfer Program Comparison',
+        description: 'This version compares real bachelor’s programs, then asks you to look at advanced education in the field.',
+        part2Title: 'School Comparison',
         part2Intro: 'Compare real bachelor’s degree programs or universities you might actually attend.',
-        part2Fields: [
+        part2OptionLabel: 'School',
+        part2OptionHelper: 'Compare a real school or program you might actually apply to.',
+        part2BasicFields: [
           ['School name', 'school'],
           ['Program name', 'program'],
+          ['Program length', 'length'],
+          ['What this path leads to', 'outcomes'],
           ['Admission requirements', 'admission'],
           ['Letters of recommendation', 'letters'],
-          ['Funding options', 'funding'],
-          ['Scholarships', 'scholarships'],
           ['Required tests', 'tests'],
-          ['Application cost or waiver', 'cost'],
-          ['Application deadline', 'deadline'],
-          ['Program length', 'length'],
-          ['Success rate, outcomes, or anything notable', 'outcomes']
+          ['Application deadline', 'deadline']
         ],
-        sourceTypeOptions: ['Program page','Admissions page','Tuition or cost page','Financial aid or scholarship page','Other institution page'],
-        part3Title: 'Highest Possible Level of Education in This Field',
-        part3Intro: 'Research the highest level this field can reach, including graduate study if it exists, and how students afford or access that path.',
-        gradNote: 'In this path, graduate study may be an important part of the long-term ladder.'
+        part2CostFields: [
+          ['Application cost or waiver', 'cost'],
+          ['Funding options from this actual school or program', 'funding'],
+          ['Specific scholarships, aid, or support listed for this option', 'scholarships']
+        ],
+        part2SourceTypes: ['Program page','Admissions page','Tuition or cost page','Financial aid or scholarship page','Deadline page','Other institution page'],
+        part3Title: 'Advanced Education Comparison',
+        part3Intro: 'Compare two higher-level education options connected to this field.',
+        part3OptionLabel: 'Advanced education option',
+        part3OptionHelper: 'This might be a master’s, doctorate, professional degree, or other higher-level academic path.',
+        part3BasicFields: [
+          ['School or institution name', 'school'],
+          ['Advanced program name', 'program'],
+          ['What level this is', 'level'],
+          ['What kind of graduate or advanced study this is', 'type'],
+          ['What this option could qualify someone for', 'outcomes']
+        ],
+        part3CostFields: [
+          ['Cost, tuition, or fees', 'cost'],
+          ['Funding, assistantships, scholarships, or aid', 'funding']
+        ],
+        part3SourceTypes: ['Program page','Admissions page','Tuition or cost page','Financial aid or scholarship page','Other institution page']
       },
+
       grad: {
         label: 'Graduate or professional school path',
-        description: 'This version keeps the bachelor’s degree step visible but puts extra emphasis on the advanced degree or professional program that comes after it.',
+        description: 'This version compares bachelor’s paths that lead into graduate or professional education, then compares advanced programs.',
         part2Title: 'Bachelor’s Program Comparison',
         part2Intro: 'Compare real bachelor’s programs that could lead toward your graduate or professional goal.',
-        part2Fields: [
+        part2OptionLabel: 'School',
+        part2OptionHelper: 'Compare a real undergraduate program that connects to your longer-term goal.',
+        part2BasicFields: [
           ['School name', 'school'],
           ['Program name', 'program'],
+          ['Program length', 'length'],
+          ['How this path connects to graduate or professional study', 'outcomes'],
           ['Admission requirements', 'admission'],
           ['Letters of recommendation', 'letters'],
-          ['Funding options', 'funding'],
-          ['Scholarships', 'scholarships'],
           ['Required tests', 'tests'],
-          ['Application cost or waiver', 'cost'],
-          ['Application deadline', 'deadline'],
-          ['Program length', 'length'],
-          ['How this path connects to graduate or professional study', 'outcomes']
+          ['Application deadline', 'deadline']
         ],
-        sourceTypeOptions: ['Program page','Admissions page','Tuition or cost page','Financial aid or scholarship page','Other institution page'],
-        part3Title: 'Highest Possible Level of Education in This Field',
-        part3Intro: 'Research the advanced degree or professional level in this field and how students pay for or access it.',
-        gradNote: 'In this path, graduate study is likely central rather than optional.'
+        part2CostFields: [
+          ['Application cost or waiver', 'cost'],
+          ['Funding options from this actual school or program', 'funding'],
+          ['Specific scholarships, aid, or support listed for this option', 'scholarships']
+        ],
+        part2SourceTypes: ['Program page','Admissions page','Tuition or cost page','Financial aid or scholarship page','Deadline page','Other institution page'],
+        part3Title: 'Graduate or Professional Program Comparison',
+        part3Intro: 'Compare two real advanced programs connected to this field.',
+        part3OptionLabel: 'Graduate or professional program',
+        part3OptionHelper: 'Compare a real advanced program you could potentially pursue later.',
+        part3BasicFields: [
+          ['School or institution name', 'school'],
+          ['Graduate or professional program name', 'program'],
+          ['What level this is', 'level'],
+          ['What kind of graduate or professional study this is', 'type'],
+          ['What this option could qualify someone for', 'outcomes']
+        ],
+        part3CostFields: [
+          ['Cost, tuition, or fees', 'cost'],
+          ['Funding, assistantships, scholarships, or aid', 'funding']
+        ],
+        part3SourceTypes: ['Program page','Admissions page','Tuition or cost page','Financial aid or scholarship page','Other institution page']
       },
+
       trades: {
         label: 'Trades / apprenticeship / licensing path',
-        description: 'This version keeps the original worksheet structure but uses trade-specific language. Section 3 prioritizes the highest certification, license, or advancement in the field.',
-        part2Title: 'Training / Apprenticeship / Licensing Program Comparison',
+        description: 'This version compares real training paths, then compares advanced certification, licensing, or higher-level trade advancement.',
+        part2Title: 'Training / Apprenticeship / Licensing Comparison',
         part2Intro: 'Compare real programs, unions, training centers, certifications, or apprenticeship pathways you might actually pursue.',
-        part2Fields: [
+        part2OptionLabel: 'Pathway',
+        part2OptionHelper: 'Compare a real training, union, apprenticeship, or licensing route.',
+        part2BasicFields: [
           ['Program, organization, union, or training center name', 'school'],
           ['Program or pathway name', 'program'],
+          ['Program or apprenticeship length', 'length'],
+          ['License, certification, or outcome this leads to', 'outcomes'],
           ['Admission or entry requirements', 'admission'],
           ['Letters of recommendation, if needed', 'letters'],
-          ['Funding options or paid training', 'funding'],
-          ['Scholarships, grants, or support', 'scholarships'],
           ['Required tests, exams, or assessments', 'tests'],
-          ['Application cost or fees', 'cost'],
-          ['Application deadline or cycle', 'deadline'],
-          ['Program or apprenticeship length', 'length'],
-          ['License, certification, or outcome this leads to', 'outcomes']
+          ['Application deadline or cycle', 'deadline']
         ],
-        sourceTypeOptions: ['Program page','Admissions page','Cost or fee page','Scholarship or support page','Certification or licensing page','Union or training organization page'],
-        part3Title: 'Highest Possible Level of Training, Certification, or Advancement in This Field',
-        part3Intro: 'Research how far this field can go. Focus first on the highest certification, license, apprenticeship level, or advanced training in the field. Then briefly note whether graduate study exists at all.',
-        gradNote: 'For this path, graduate study may matter less than licenses, certifications, endorsements, or advanced trade status.'
+        part2CostFields: [
+          ['Application cost or fees', 'cost'],
+          ['Funding options or paid training', 'funding'],
+          ['Specific scholarships, grants, or support listed for this option', 'scholarships']
+        ],
+        part2SourceTypes: ['Program page','Admissions page','Cost or fee page','Scholarship or support page','Certification or licensing page','Union or training organization page'],
+        part3Title: 'Advanced Certification / Licensing / Advancement Comparison',
+        part3Intro: 'Compare two higher-level advancement options in this field.',
+        part3OptionLabel: 'Advanced option',
+        part3OptionHelper: 'This might be an advanced license, certification, endorsement, supervisor role, or higher apprenticeship level.',
+        part3BasicFields: [
+          ['Organization or institution name', 'school'],
+          ['Advanced certification, license, or advancement name', 'program'],
+          ['What level this is', 'level'],
+          ['What kind of advanced training or certification this is', 'type'],
+          ['What this option could qualify someone for', 'outcomes']
+        ],
+        part3CostFields: [
+          ['Cost, fees, or exam costs', 'cost'],
+          ['Funding, employer support, union support, or paid access', 'funding']
+        ],
+        part3SourceTypes: ['Certification or licensing page','Program page','Cost or fee page','Union or training organization page','Government page','Other organization page']
       },
+
       military: {
         label: 'Military path',
-        description: 'This version compares real entry and training pathways, then asks how far the path can go through rank, training, education, or later academic options.',
+        description: 'This version compares real entry paths, then compares advanced military education, officer, or long-term advancement options.',
         part2Title: 'Military Path Comparison',
         part2Intro: 'Compare real military branches, career fields, or training routes you might actually pursue.',
-        part2Fields: [
+        part2OptionLabel: 'Pathway',
+        part2OptionHelper: 'Compare a real branch, role, rate, MOS, training route, or program.',
+        part2BasicFields: [
           ['Branch or organization name', 'school'],
           ['Role, rate, MOS, or pathway name', 'program'],
+          ['Training length', 'length'],
+          ['Long-term opportunities or outcomes', 'outcomes'],
           ['Entry requirements', 'admission'],
           ['Letters of recommendation, if needed', 'letters'],
-          ['Funding, benefits, or education support', 'funding'],
-          ['Scholarships or special support', 'scholarships'],
           ['Required tests', 'tests'],
-          ['Application cost or fees', 'cost'],
-          ['Application timeline or deadline', 'deadline'],
-          ['Training length', 'length'],
-          ['Long-term opportunities or outcomes', 'outcomes']
+          ['Application timeline or deadline', 'deadline']
         ],
-        sourceTypeOptions: ['Official branch page','Training page','Benefits page','Admissions or eligibility page','Other military or government page'],
-        part3Title: 'Highest Possible Level of Advancement or Education in This Field',
-        part3Intro: 'Research how far this path can go through advanced training, rank, degree completion, officer pathways, or other long-term advancement.',
-        gradNote: 'Graduate study may exist later, but it may be only one part of long-term advancement in this path.'
+        part2CostFields: [
+          ['Application cost or fees', 'cost'],
+          ['Funding, benefits, or education support', 'funding'],
+          ['Specific scholarships or special support listed for this option', 'scholarships']
+        ],
+        part2SourceTypes: ['Official branch page','Training page','Benefits page','Admissions or eligibility page','Government page','Other military page'],
+        part3Title: 'Advanced Training / Rank / Education Comparison',
+        part3Intro: 'Compare two longer-term advancement options in this field.',
+        part3OptionLabel: 'Advanced option',
+        part3OptionHelper: 'This might be officer training, advanced schooling, rank advancement, or a later educational path.',
+        part3BasicFields: [
+          ['Branch, school, or organization name', 'school'],
+          ['Advanced training, officer path, or advancement name', 'program'],
+          ['What level this is', 'level'],
+          ['What kind of advanced military or educational path this is', 'type'],
+          ['What this option could lead to', 'outcomes']
+        ],
+        part3CostFields: [
+          ['Cost, fees, or required expenses', 'cost'],
+          ['Benefits, GI Bill support, paid training, or access support', 'funding']
+        ],
+        part3SourceTypes: ['Official branch page','Training page','Benefits page','Government page','Other military page']
       },
+
       business: {
         label: 'Business / entrepreneur path',
-        description: 'This version compares real education, training, licensing, or organizational paths that could help support a business goal.',
+        description: 'This version compares real education, training, licensing, or support paths connected to a business goal, then compares higher-level advancement options.',
         part2Title: 'Education / Training / Licensing Path Comparison',
         part2Intro: 'Compare real schools, programs, certifications, licenses, incubators, or support organizations connected to your business goal.',
-        part2Fields: [
+        part2OptionLabel: 'Pathway',
+        part2OptionHelper: 'Compare a real education, training, licensing, or support option connected to your goal.',
+        part2BasicFields: [
           ['School, program, or organization name', 'school'],
           ['Program or pathway name', 'program'],
+          ['Program or training length', 'length'],
+          ['What this path would help you do', 'outcomes'],
           ['Admission or entry requirements', 'admission'],
           ['Letters of recommendation, if needed', 'letters'],
-          ['Funding or support options', 'funding'],
-          ['Scholarships, grants, or startup support', 'scholarships'],
           ['Required tests, permits, or certifications', 'tests'],
-          ['Application cost, fees, or startup-related cost', 'cost'],
-          ['Application deadline or timeline', 'deadline'],
-          ['Program or training length', 'length'],
-          ['What this path would help you do', 'outcomes']
+          ['Application deadline or timeline', 'deadline']
         ],
-        sourceTypeOptions: ['Program page','Licensing or permit page','Grant or funding page','Admissions page','Other organization page'],
-        part3Title: 'Highest Possible Level of Training, Certification, or Growth in This Field',
-        part3Intro: 'Research how far this path can go through education, certification, licensing, specialization, or long-term business growth.',
-        gradNote: 'Graduate study may or may not matter here, depending on the field.'
+        part2CostFields: [
+          ['Application cost, fees, or startup-related cost', 'cost'],
+          ['Funding or support options from this actual program or organization', 'funding'],
+          ['Specific scholarships, grants, or startup support listed for this option', 'scholarships']
+        ],
+        part2SourceTypes: ['Program page','Licensing or permit page','Grant or funding page','Admissions page','Deadline page','Other organization page'],
+        part3Title: 'Advanced Training / Certification / Growth Comparison',
+        part3Intro: 'Compare two higher-level advancement options connected to this field.',
+        part3OptionLabel: 'Advanced option',
+        part3OptionHelper: 'This might be an advanced credential, license, incubator, certification, or growth-related path.',
+        part3BasicFields: [
+          ['School, organization, or institution name', 'school'],
+          ['Advanced program, credential, or pathway name', 'program'],
+          ['What level this is', 'level'],
+          ['What kind of advanced training or certification this is', 'type'],
+          ['What this option could help someone do', 'outcomes']
+        ],
+        part3CostFields: [
+          ['Cost, fees, or related expenses', 'cost'],
+          ['Funding, grants, support, or access options', 'funding']
+        ],
+        part3SourceTypes: ['Program page','Licensing or permit page','Grant or funding page','Other organization page']
       }
     };
+
+    function loadState() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {
+          fields: {},
+          activeTrack: '',
+          resolvedTrack: '',
+          part2: {},
+          part3: {}
+        };
+      } catch {
+        return {
+          fields: {},
+          activeTrack: '',
+          resolvedTrack: '',
+          part2: {},
+          part3: {}
+        };
+      }
+    }
 
     let state = loadState();
     let activeTrack = state.activeTrack || '';
     let resolvedTrack = state.resolvedTrack || '';
-
-    function loadState() {
-      try {
-        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || { entries: {}, fields: {} };
-      } catch {
-        return { entries: {}, fields: {} };
-      }
-    }
 
     function saveState() {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -819,21 +992,6 @@
 
     const debouncedSave = debounce(saveState, 250);
 
-    function wireGlobalInputs() {
-      document.querySelectorAll('[data-save]').forEach(el => {
-        const key = el.id;
-        if (state.fields && state.fields[key] != null) el.value = state.fields[key];
-        el.addEventListener('input', () => {
-          state.fields[key] = el.value;
-          debouncedSave();
-        });
-        el.addEventListener('change', () => {
-          state.fields[key] = el.value;
-          debouncedSave();
-        });
-      });
-    }
-
     function applyTheme(theme) {
       const dark = theme === 'dark';
       document.body.classList.toggle('dark', dark);
@@ -849,9 +1007,68 @@
       });
     }
 
+    function wireGlobalInputs() {
+      document.querySelectorAll('[data-save]').forEach(el => {
+        const key = el.id;
+        if (state.fields[key] != null) el.value = state.fields[key];
+
+        const update = () => {
+          state.fields[key] = el.value;
+          debouncedSave();
+        };
+
+        el.addEventListener('input', update);
+        el.addEventListener('change', update);
+      });
+    }
+
+    function getField(id) {
+      const el = document.getElementById(id);
+      return el ? el.value.trim() : (state.fields[id] || '').trim();
+    }
+
+    function createEmptySource() {
+      return {
+        title: '',
+        link: '',
+        type: '',
+        info: ''
+      };
+    }
+
+    function createEmptyPart2Option(track) {
+      const cfg = tracks[track];
+      const option = { sources: [createEmptySource(), createEmptySource()] };
+      [...cfg.part2BasicFields, ...cfg.part2CostFields].forEach(([, key]) => option[key] = '');
+      return option;
+    }
+
+    function createEmptyPart3Option(track) {
+      const cfg = tracks[track];
+      const option = { sources: [createEmptySource(), createEmptySource()] };
+      [...cfg.part3BasicFields, ...cfg.part3CostFields].forEach(([, key]) => option[key] = '');
+      return option;
+    }
+
+    function ensureTrackData(track) {
+      if (!track || !tracks[track]) return;
+
+      state.part2 = state.part2 || {};
+      state.part3 = state.part3 || {};
+
+      if (!state.part2[track] || !state.part2[track].length) {
+        state.part2[track] = [createEmptyPart2Option(track), createEmptyPart2Option(track)];
+      }
+
+      if (!state.part3[track] || !state.part3[track].length) {
+        state.part3[track] = [createEmptyPart3Option(track), createEmptyPart3Option(track)];
+      }
+    }
+
     function setTrack(track) {
       activeTrack = track;
       state.activeTrack = track;
+
       if (track !== 'notsure') {
         resolvedTrack = track;
         state.resolvedTrack = track;
@@ -882,6 +1099,8 @@
       const cfg = tracks[track];
       if (!cfg) return;
 
+      ensureTrackData(track);
+
       trackSummaryCard.classList.remove('hidden');
       part1Card.classList.remove('hidden');
       part2Card.classList.remove('hidden');
@@ -893,115 +1112,285 @@
       document.getElementById('part2Intro').textContent = cfg.part2Intro;
       document.getElementById('part3Title').textContent = cfg.part3Title;
       document.getElementById('part3Intro').textContent = cfg.part3Intro;
-      document.getElementById('part3FieldNote').textContent = cfg.gradNote;
 
-      ensureEntries(track);
-      renderEntries(track);
+      renderPart2(track);
+      renderPart3(track);
       updateSummary();
       updateProgress();
     }
 
-    function ensureEntries(track) {
-      state.entries = state.entries || {};
-      if (!state.entries[track] || !state.entries[track].length) {
-        state.entries[track] = [createEmptyEntry(track), createEmptyEntry(track)];
-      }
+    function renderFields(container, fields, optionObj, onChange, prefix) {
+      const grid = document.createElement('div');
+      grid.className = 'field-grid';
+
+      fields.forEach(([labelText, key]) => {
+        const wrap = document.createElement('div');
+        wrap.className = 'field';
+
+        const id = `${prefix}_${key}`;
+
+        if (key === 'outcomes') {
+          wrap.innerHTML = `
+            <label for="${id}">${labelText}</label>
+            <textarea id="${id}">${escapeHtml(optionObj[key] || '')}</textarea>
+          `;
+          wrap.querySelector('textarea').addEventListener('input', e => onChange(key, e.target.value));
+        } else {
+          wrap.innerHTML = `
+            <label for="${id}">${labelText}</label>
+            <input id="${id}" type="text" value="${escapeHtml(optionObj[key] || '')}" />
+          `;
+          wrap.querySelector('input').addEventListener('input', e => onChange(key, e.target.value));
+        }
+
+        grid.appendChild(wrap);
+      });
+
+      container.appendChild(grid);
     }
 
-    function createEmptyEntry(track) {
-      const cfg = tracks[track];
-      const entry = { sourceTitle: '', sourceSite: '', sourceLink: '', sourceType: '', sourceInfo: '' };
-      cfg.part2Fields.forEach(([, key]) => entry[key] = '');
-      return entry;
-    }
+    function renderSourceBlock(container, optionObj, sourceTypes, onUpdateSource, onAddSource, onRemoveSource, prefix) {
+      const sourceCard = document.createElement('div');
+      sourceCard.className = 'source-card';
 
-    function renderEntries(track) {
-      const cfg = tracks[track];
-      const entries = state.entries[track] || [];
-      part2Entries.innerHTML = '';
+      sourceCard.innerHTML = `
+        <h4>Sources used for this option</h4>
+        <p class="helper">Use the exact page title and the exact page-specific link. Add more than one source if you used more than one page.</p>
+      `;
 
-      entries.forEach((entry, index) => {
-        const template = document.getElementById('entryTemplate');
-        const clone = template.content.cloneNode(true);
-        clone.querySelector('.entry-number').textContent = index + 1;
-        clone.querySelector('.entry-helper').textContent = cfg.part2Intro;
+      const list = document.createElement('div');
+      list.className = 'source-list';
 
-        const fieldsContainer = clone.querySelector('.entry-fields');
-        cfg.part2Fields.forEach(([labelText, key]) => {
-          const field = document.createElement('div');
-          field.className = 'field';
-          const id = `entry_${track}_${index}_${key}`;
-          field.innerHTML = `
-            <label for="${id}">${labelText}</label>
-            <input id="${id}" type="text" value="${escapeHtml(entry[key] || '')}" />
-          `;
-          field.querySelector('input').addEventListener('input', (e) => {
-            state.entries[track][index][key] = e.target.value;
-            debouncedSave();
-          });
-          fieldsContainer.appendChild(field);
-        });
+      optionObj.sources.forEach((source, index) => {
+        const template = document.getElementById('sourceItemTemplate');
+        const node = template.content.cloneNode(true);
 
-        const sourceContainer = clone.querySelector('.source-fields');
-        const sourceFields = [
-          ['Exact webpage title', 'sourceTitle', 'text'],
-          ['School, institution, or organization name', 'sourceSite', 'text'],
-          ['Exact page-specific link', 'sourceLink', 'url']
-        ];
+        node.querySelector('.source-number').textContent = index + 1;
 
-        sourceFields.forEach(([labelText, key, type]) => {
-          const field = document.createElement('div');
-          field.className = 'field';
-          const id = `entry_${track}_${index}_${key}`;
-          field.innerHTML = `
-            <label for="${id}">${labelText}</label>
-            <input id="${id}" type="${type}" value="${escapeHtml(entry[key] || '')}" ${type === 'url' ? 'placeholder="https://"' : ''} />
-          `;
-          field.querySelector('input').addEventListener('input', (e) => {
-            state.entries[track][index][key] = e.target.value;
-            debouncedSave();
-          });
-          sourceContainer.appendChild(field);
-        });
+        const removeBtn = node.querySelector('.remove-source-btn');
+        if (optionObj.sources.length <= 1) {
+          removeBtn.classList.add('hidden');
+        }
+        removeBtn.addEventListener('click', () => onRemoveSource(index));
+
+        const fieldsWrap = node.querySelector('.source-fields');
+
+        const titleId = `${prefix}_source_${index}_title`;
+        const linkId = `${prefix}_source_${index}_link`;
+        const typeId = `${prefix}_source_${index}_type`;
+        const infoId = `${prefix}_source_${index}_info`;
+
+        const titleField = document.createElement('div');
+        titleField.className = 'field';
+        titleField.innerHTML = `
+          <label for="${titleId}">Exact webpage title</label>
+          <input id="${titleId}" type="text" value="${escapeHtml(source.title || '')}" />
+        `;
+        titleField.querySelector('input').addEventListener('input', e => onUpdateSource(index, 'title', e.target.value));
+        fieldsWrap.appendChild(titleField);
+
+        const linkField = document.createElement('div');
+        linkField.className = 'field';
+        linkField.innerHTML = `
+          <label for="${linkId}">Exact page-specific link</label>
+          <input id="${linkId}" type="url" placeholder="https://" value="${escapeHtml(source.link || '')}" />
+        `;
+        linkField.querySelector('input').addEventListener('input', e => onUpdateSource(index, 'link', e.target.value));
+        fieldsWrap.appendChild(linkField);
 
         const typeField = document.createElement('div');
         typeField.className = 'field';
-        const typeId = `entry_${track}_${index}_sourceType`;
         typeField.innerHTML = `<label for="${typeId}">What kind of page is this?</label>`;
         const select = document.createElement('select');
         select.id = typeId;
-        select.innerHTML = '<option value="">Select one</option>' + cfg.sourceTypeOptions.map(opt => `<option ${entry.sourceType === opt ? 'selected' : ''}>${opt}</option>`).join('');
-        select.addEventListener('change', (e) => {
-          state.entries[track][index].sourceType = e.target.value;
-          debouncedSave();
-        });
+        select.innerHTML = '<option value="">Select one</option>' + sourceTypes.map(type => `<option ${source.type === type ? 'selected' : ''}>${type}</option>`).join('');
+        select.addEventListener('change', e => onUpdateSource(index, 'type', e.target.value));
         typeField.appendChild(select);
-        sourceContainer.appendChild(typeField);
+        fieldsWrap.appendChild(typeField);
 
         const infoField = document.createElement('div');
         infoField.className = 'field';
         infoField.style.gridColumn = '1 / -1';
-        const infoId = `entry_${track}_${index}_sourceInfo`;
         infoField.innerHTML = `
           <label for="${infoId}">What information did this page give you?</label>
-          <input id="${infoId}" type="text" value="${escapeHtml(entry.sourceInfo || '')}" />
+          <input id="${infoId}" type="text" value="${escapeHtml(source.info || '')}" />
         `;
-        infoField.querySelector('input').addEventListener('input', (e) => {
-          state.entries[track][index].sourceInfo = e.target.value;
-          debouncedSave();
-        });
-        sourceContainer.appendChild(infoField);
+        infoField.querySelector('input').addEventListener('input', e => onUpdateSource(index, 'info', e.target.value));
+        fieldsWrap.appendChild(infoField);
 
-        const removeBtn = clone.querySelector('.remove-btn');
-        removeBtn.addEventListener('click', () => {
-          if (state.entries[track].length <= 1) return;
-          state.entries[track].splice(index, 1);
-          renderEntries(track);
-          saveState();
-        });
-        if (entries.length <= 2) removeBtn.classList.add('hidden');
+        list.appendChild(node);
+      });
 
-        part2Entries.appendChild(clone);
+      sourceCard.appendChild(list);
+
+      const addBtn = document.createElement('button');
+      addBtn.type = 'button';
+      addBtn.className = 'btn-secondary add-source-btn';
+      addBtn.style.marginTop = '12px';
+      addBtn.textContent = 'Add another source';
+      addBtn.addEventListener('click', onAddSource);
+      sourceCard.appendChild(addBtn);
+
+      container.appendChild(sourceCard);
+    }
+
+    function renderPart2(track) {
+      const cfg = tracks[track];
+      const options = state.part2[track] || [];
+      part2Options.innerHTML = '';
+
+      options.forEach((optionObj, idx) => {
+        const template = document.getElementById('optionCardTemplate');
+        const node = template.content.cloneNode(true);
+        const card = node.querySelector('.option-card');
+        const heading = node.querySelector('.option-heading');
+        const helper = node.querySelector('.option-helper');
+        const basicGroup = node.querySelector('.basic-group');
+        const costGroup = node.querySelector('.cost-group');
+
+        heading.textContent = `${cfg.part2OptionLabel} ${idx + 1}`;
+        helper.textContent = cfg.part2OptionHelper;
+
+        const basicLabel = document.createElement('span');
+        basicLabel.className = 'group-label';
+        basicLabel.textContent = 'Main information';
+        basicGroup.appendChild(basicLabel);
+
+        renderFields(
+          basicGroup,
+          cfg.part2BasicFields,
+          optionObj,
+          (key, value) => {
+            state.part2[track][idx][key] = value;
+            debouncedSave();
+          },
+          `p2_${track}_${idx}_basic`
+        );
+
+        const costLabel = document.createElement('span');
+        costLabel.className = 'group-label';
+        costLabel.textContent = 'Cost and funding';
+        costGroup.appendChild(costLabel);
+
+        renderFields(
+          costGroup,
+          cfg.part2CostFields,
+          optionObj,
+          (key, value) => {
+            state.part2[track][idx][key] = value;
+            debouncedSave();
+          },
+          `p2_${track}_${idx}_cost`
+        );
+
+        const costSourceNote = document.createElement('p');
+        costSourceNote.className = 'helper';
+        costSourceNote.style.marginTop = '12px';
+        costSourceNote.textContent = 'If you used different pages for cost, aid, or deadlines, list them in the source area below.';
+        costGroup.appendChild(costSourceNote);
+
+        renderSourceBlock(
+          card,
+          optionObj,
+          cfg.part2SourceTypes,
+          (sourceIndex, key, value) => {
+            state.part2[track][idx].sources[sourceIndex][key] = value;
+            debouncedSave();
+          },
+          () => {
+            state.part2[track][idx].sources.push(createEmptySource());
+            renderPart2(track);
+            saveState();
+          },
+          (sourceIndex) => {
+            state.part2[track][idx].sources.splice(sourceIndex, 1);
+            renderPart2(track);
+            saveState();
+          },
+          `p2_${track}_${idx}_sources`
+        );
+
+        part2Options.appendChild(card);
+      });
+    }
+
+    function renderPart3(track) {
+      const cfg = tracks[track];
+      const options = state.part3[track] || [];
+      part3Options.innerHTML = '';
+
+      options.forEach((optionObj, idx) => {
+        const template = document.getElementById('optionCardTemplate');
+        const node = template.content.cloneNode(true);
+        const card = node.querySelector('.option-card');
+        const heading = node.querySelector('.option-heading');
+        const helper = node.querySelector('.option-helper');
+        const basicGroup = node.querySelector('.basic-group');
+        const costGroup = node.querySelector('.cost-group');
+
+        heading.textContent = `${cfg.part3OptionLabel} ${idx + 1}`;
+        helper.textContent = cfg.part3OptionHelper;
+
+        const basicLabel = document.createElement('span');
+        basicLabel.className = 'group-label';
+        basicLabel.textContent = 'Main information';
+        basicGroup.appendChild(basicLabel);
+
+        renderFields(
+          basicGroup,
+          cfg.part3BasicFields,
+          optionObj,
+          (key, value) => {
+            state.part3[track][idx][key] = value;
+            debouncedSave();
+          },
+          `p3_${track}_${idx}_basic`
+        );
+
+        const costLabel = document.createElement('span');
+        costLabel.className = 'group-label';
+        costLabel.textContent = 'Cost and access';
+        costGroup.appendChild(costLabel);
+
+        renderFields(
+          costGroup,
+          cfg.part3CostFields,
+          optionObj,
+          (key, value) => {
+            state.part3[track][idx][key] = value;
+            debouncedSave();
+          },
+          `p3_${track}_${idx}_cost`
+        );
+
+        const costSourceNote = document.createElement('p');
+        costSourceNote.className = 'helper';
+        costSourceNote.style.marginTop = '12px';
+        costSourceNote.textContent = 'Use actual program, tuition, aid, benefits, licensing, union, or organization pages when possible, then list them below.';
+        costGroup.appendChild(costSourceNote);
+
+        renderSourceBlock(
+          card,
+          optionObj,
+          cfg.part3SourceTypes,
+          (sourceIndex, key, value) => {
+            state.part3[track][idx].sources[sourceIndex][key] = value;
+            debouncedSave();
+          },
+          () => {
+            state.part3[track][idx].sources.push(createEmptySource());
+            renderPart3(track);
+            saveState();
+          },
+          (sourceIndex) => {
+            state.part3[track][idx].sources.splice(sourceIndex, 1);
+            renderPart3(track);
+            saveState();
+          },
+          `p3_${track}_${idx}_sources`
+        );
+
+        part3Options.appendChild(card);
       });
     }
 
@@ -1013,46 +1402,36 @@
         .replace(/"/g, '&quot;');
     }
 
-    addPart2Btn.addEventListener('click', () => {
-      const track = resolvedTrack || activeTrack;
-      if (!track || !tracks[track]) return;
-      state.entries[track].push(createEmptyEntry(track));
-      renderEntries(track);
-      saveState();
-    });
+    function buildSourcesText(sources) {
+      const filled = (sources || []).filter(src =>
+        (src.title || '').trim() ||
+        (src.link || '').trim() ||
+        (src.type || '').trim() ||
+        (src.info || '').trim()
+      );
 
-    applyNotsurePathBtn.addEventListener('click', () => {
-      const chosen = document.getElementById('notsurePath').value;
-      if (!chosen) {
-        alert('Choose one path to explore first.');
-        return;
-      }
-      resolvedTrack = chosen;
-      state.resolvedTrack = chosen;
-      renderTrack(chosen);
-      saveState();
-    });
+      if (!filled.length) return ['No sources listed yet.'];
 
-    trackGrid.querySelectorAll('.track-option').forEach(option => {
-      option.addEventListener('click', () => setTrack(option.dataset.track));
-      option.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          setTrack(option.dataset.track);
-        }
+      const lines = [];
+      filled.forEach((src, idx) => {
+        lines.push(`Source ${idx + 1}`);
+        lines.push(`- Exact webpage title: ${src.title || ''}`);
+        lines.push(`- Exact page-specific link: ${src.link || ''}`);
+        lines.push(`- Page type: ${src.type || ''}`);
+        lines.push(`- What information this page gave you: ${src.info || ''}`);
       });
-    });
-
-    function getField(id) {
-      const el = document.getElementById(id);
-      return el ? el.value.trim() : '';
+      return lines;
     }
 
     function buildSummary() {
       const track = resolvedTrack || (activeTrack !== 'notsure' ? activeTrack : '');
-      if (!track || !tracks[track]) return 'Choose a track and begin filling in the page. Your summary will appear here.';
+      if (!track || !tracks[track]) {
+        return 'Choose a track and begin filling in the page. Your summary will appear here.';
+      }
+
       const cfg = tracks[track];
       const lines = [];
+
       lines.push('WEEK 1 CAREER PATH TIMELINE WORKSHEET');
       lines.push('');
       lines.push(`Selected track: ${cfg.label}`);
@@ -1060,9 +1439,9 @@
       if (activeTrack === 'notsure') {
         lines.push('');
         lines.push('NOT SURE YET REFLECTION');
-        lines.push(`Path chosen for this assignment: ${getField('notsurePath') || ''}`);
-        lines.push(`How sure are you: ${getField('notsureConfidence') || ''}`);
-        lines.push(`Why you chose this path for now: ${getField('notsureReason') || ''}`);
+        lines.push(`Path chosen for this assignment: ${getField('notsurePath')}`);
+        lines.push(`How sure are you: ${getField('notsureConfidence')}`);
+        lines.push(`Why you chose this path for now: ${getField('notsureReason')}`);
       }
 
       lines.push('');
@@ -1078,63 +1457,111 @@
 
       lines.push('');
       lines.push(`SECTION 2: ${cfg.part2Title.toUpperCase()}`);
-      (state.entries[track] || []).forEach((entry, idx) => {
+
+      (state.part2[track] || []).forEach((optionObj, idx) => {
         lines.push('');
-        lines.push(`Option ${idx + 1}`);
-        cfg.part2Fields.forEach(([labelText, key]) => {
-          lines.push(`${labelText}: ${entry[key] || ''}`);
+        lines.push(`${cfg.part2OptionLabel.toUpperCase()} ${idx + 1}`);
+
+        lines.push('Main information');
+        cfg.part2BasicFields.forEach(([label, key]) => {
+          lines.push(`- ${label}: ${optionObj[key] || ''}`);
         });
-        lines.push(`Exact webpage title: ${entry.sourceTitle || ''}`);
-        lines.push(`School, institution, or organization name: ${entry.sourceSite || ''}`);
-        lines.push(`Exact page-specific link: ${entry.sourceLink || ''}`);
-        lines.push(`Page type: ${entry.sourceType || ''}`);
-        lines.push(`What information this page gave you: ${entry.sourceInfo || ''}`);
+
+        lines.push('Cost and funding');
+        cfg.part2CostFields.forEach(([label, key]) => {
+          lines.push(`- ${label}: ${optionObj[key] || ''}`);
+        });
+
+        lines.push('Sources used');
+        buildSourcesText(optionObj.sources).forEach(line => lines.push(line));
       });
 
       lines.push('');
       lines.push(`SECTION 3: ${cfg.part3Title.toUpperCase()}`);
-      lines.push(`Highest possible level: ${getField('highestLevel')}`);
-      lines.push(`Steps before that level: ${getField('highestLevelSteps')}`);
-      lines.push(`Does graduate study exist in this field: ${getField('gradExists')}`);
-      lines.push(`If graduate study exists, what kind is it? If not, what matters more instead: ${getField('gradOrAlternative')}`);
-      lines.push(`Cost, funding, or access information for reaching this level: ${getField('fundingWithinP3')}`);
+
+      (state.part3[track] || []).forEach((optionObj, idx) => {
+        lines.push('');
+        lines.push(`${cfg.part3OptionLabel.toUpperCase()} ${idx + 1}`);
+
+        lines.push('Main information');
+        cfg.part3BasicFields.forEach(([label, key]) => {
+          lines.push(`- ${label}: ${optionObj[key] || ''}`);
+        });
+
+        lines.push('Cost and access');
+        cfg.part3CostFields.forEach(([label, key]) => {
+          lines.push(`- ${label}: ${optionObj[key] || ''}`);
+        });
+
+        lines.push('Sources used');
+        buildSourcesText(optionObj.sources).forEach(line => lines.push(line));
+      });
+
+      lines.push('');
+      lines.push('REFLECTION');
       lines.push(`What surprised you most: ${getField('highestLevelReflection')}`);
-      lines.push(`Exact webpage title: ${getField('p3SourceTitle')}`);
-      lines.push(`School, institution, or organization name: ${getField('p3SourceSite')}`);
-      lines.push(`Exact page-specific link: ${getField('p3SourceLink')}`);
-      lines.push(`Page type: ${getField('p3SourceType')}`);
-      lines.push(`What information this page gave you: ${getField('p3SourceInfo')}`);
 
       return lines.join('\n');
     }
 
-    function updateSummary() { summaryOutput.textContent = buildSummary(); }
-
-    function updateProgress() {
-      const p1 = percentComplete(['currentProgram','currentSchool','careerGoal','currentStage','skillsHave','skillsNeed','transferPlan','currentConnections']);
-      const track = resolvedTrack || (activeTrack !== 'notsure' ? activeTrack : '');
-      let p2 = 0;
-      if (track && state.entries && state.entries[track]) {
-        const entries = state.entries[track];
-        const totalFields = entries.length * (tracks[track].part2Fields.length + 5);
-        let done = 0;
-        entries.forEach(entry => {
-          tracks[track].part2Fields.forEach(([,key]) => { if ((entry[key] || '').trim()) done++; });
-          ['sourceTitle','sourceSite','sourceLink','sourceType','sourceInfo'].forEach(key => { if ((entry[key] || '').trim()) done++; });
-        });
-        p2 = totalFields ? Math.round((done / totalFields) * 100) : 0;
-      }
-      const p3 = percentComplete(['highestLevel','highestLevelSteps','gradExists','gradOrAlternative','fundingWithinP3','highestLevelReflection','p3SourceTitle','p3SourceSite','p3SourceLink','p3SourceType','p3SourceInfo']);
-      const p4 = track ? 100 : 0;
-      document.getElementById('prog1').style.width = p1 + '%';
-      document.getElementById('prog2').style.width = p2 + '%';
-      document.getElementById('prog3').style.width = p3 + '%';
-      document.getElementById('prog4').style.width = p4 + '%';
+    function updateSummary() {
+      summaryOutput.textContent = buildSummary();
     }
 
     function percentComplete(ids) {
       const done = ids.filter(id => getField(id)).length;
-      return Math.round((done / ids.length) * 100);
+      return ids.length ? Math.round((done / ids.length) * 100) : 0;
+    }
+
+    function progressForOptionSet(optionSet, fieldLists) {
+      if (!optionSet || !optionSet.length) return 0;
+      let total = 0;
+      let done = 0;
+
+      optionSet.forEach(option => {
+        fieldLists.flat().forEach(([, key]) => {
+          total++;
+          if ((option[key] || '').trim()) done++;
+        });
+
+        (option.sources || []).forEach(source => {
+          ['title', 'link', 'type', 'info'].forEach(key => {
+            total++;
+            if ((source[key] || '').trim()) done++;
+          });
+        });
+      });
+
+      return total ? Math.round((done / total) * 100) : 0;
+    }
+
+    function updateProgress() {
+      const p1 = percentComplete([
+        'currentProgram',
+        'currentSchool',
+        'careerGoal',
+        'currentStage',
+        'skillsHave',
+        'skillsNeed',
+        'transferPlan',
+        'currentConnections'
+      ]);
+
+      const track = resolvedTrack || (activeTrack !== 'notsure' ? activeTrack : '');
+      const p2 = track && tracks[track]
+        ? progressForOptionSet(state.part2[track], [tracks[track].part2BasicFields, tracks[track].part2CostFields])
+        : 0;
+
+      const p3 = track && tracks[track]
+        ? progressForOptionSet(state.part3[track], [tracks[track].part3BasicFields, tracks[track].part3CostFields])
+        : 0;
+
+      const p4 = track ? 100 : 0;
+
+      document.getElementById('prog1').style.width = p1 + '%';
+      document.getElementById('prog2').style.width = p2 + '%';
+      document.getElementById('prog3').style.width = p3 + '%';
+      document.getElementById('prog4').style.width = p4 + '%';
     }
 
     document.getElementById('copySummaryBtn').addEventListener('click', async () => {
@@ -1157,6 +1584,28 @@
     });
 
     document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+    applyNotsurePathBtn.addEventListener('click', () => {
+      const chosen = document.getElementById('notsurePath').value;
+      if (!chosen) {
+        alert('Choose one path to explore first.');
+        return;
+      }
+      resolvedTrack = chosen;
+      state.resolvedTrack = chosen;
+      renderTrack(chosen);
+      saveState();
+    });
+
+    trackGrid.querySelectorAll('.track-option').forEach(option => {
+      option.addEventListener('click', () => setTrack(option.dataset.track));
+      option.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          setTrack(option.dataset.track);
+        }
+      });
+    });
 
     wireGlobalInputs();
     initTheme();
