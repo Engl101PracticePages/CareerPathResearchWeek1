@@ -493,6 +493,19 @@
 
     .source-card.invalid .validation-message { display: block; }
 
+    .reflection-card {
+      margin-top: 22px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 24px;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--paper) 84%, var(--sage) 16%), var(--paper));
+      box-shadow: 0 14px 36px rgba(40, 25, 15, 0.07);
+    }
+
+    .reflection-card textarea {
+      min-height: 140px;
+    }
+
     .blocker {
       display: none;
       border-radius: 20px;
@@ -657,7 +670,14 @@
           <h2 id="section3Title">Research the highest level of this field</h2>
           <p class="lede" id="section3Intro">Look beyond the entry-level version of this career. What does advancement look like?</p>
           <div class="option-list" id="section3Options"></div>
-          <div class="field" style="margin-top:18px;"><label for="reflection">What surprised you most when you researched this path?</label><textarea id="reflection" data-save></textarea></div>
+          <div class="reflection-card">
+            <div class="kicker">Reflection</div>
+            <h3>What surprised you most?</h3>
+            <div class="field">
+              <label for="reflection">What surprised you most when you researched this path?</label>
+              <textarea id="reflection" data-save></textarea>
+            </div>
+          </div>
         </section>
 
         <section class="final-card" id="summarySection">
