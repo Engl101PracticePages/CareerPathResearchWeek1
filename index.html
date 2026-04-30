@@ -6,46 +6,44 @@
   <title>Week 1 Career Path Research</title>
   <style>
     :root {
-      --bg: #f6f1e8;
-      --bg2: #fbf8f3;
-      --card: rgba(255,255,255,0.95);
-      --card-strong: #ffffff;
-      --border: #e8dfd1;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --accent: #9f6d38;
-      --accent-soft: #f4e7d7;
-      --accent-2: #7b6650;
-      --good: #275d38;
-      --warning: #8a4b14;
-      --danger-bg: #fbefec;
-      --danger-text: #8b3f2d;
-      --shadow: 0 10px 30px rgba(53, 35, 17, 0.08);
-      --radius: 24px;
-      --field: #fffdfb;
-      --toggle: #f2e6d8;
-      --subtle: #f8f2ea;
+      --cream: #f7efe3;
+      --paper: #fffaf2;
+      --paper-2: #fff5e8;
+      --ink: #18212b;
+      --muted: #68727d;
+      --clay: #b45f3c;
+      --clay-dark: #793c29;
+      --sage: #6f7f62;
+      --plum: #463246;
+      --gold: #d6a95d;
+      --good: #286145;
+      --bad: #9a3412;
+      --bad-soft: #fff0eb;
+      --line: rgba(24, 33, 43, 0.14);
+      --soft: rgba(180, 95, 60, 0.12);
+      --shadow: 0 24px 70px rgba(40, 25, 15, 0.16);
+      --radius: 30px;
+      --field: #fffdf8;
     }
 
     body.dark {
-      --bg: #151617;
-      --bg2: #1d2023;
-      --card: rgba(34, 37, 40, 0.95);
-      --card-strong: #24282c;
-      --border: #3a4046;
-      --text: #f1f3f5;
-      --muted: #c0c7cf;
-      --accent: #d2a063;
-      --accent-soft: #3a3025;
-      --accent-2: #d8c1a7;
-      --good: #9ad3a9;
-      --warning: #f0c089;
-      --danger-bg: #4a2d28;
-      --danger-text: #ffd3cb;
-      --shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
-      --field: #1d2125;
-      --toggle: #30281f;
-      --subtle: #202427;
+      --cream: #14171a;
+      --paper: #20252b;
+      --paper-2: #252a31;
+      --ink: #f4f6f8;
+      --muted: #bdc7d3;
+      --clay: #d98763;
+      --clay-dark: #f0b28f;
+      --sage: #a9b998;
+      --plum: #2a2430;
+      --gold: #e8bf77;
+      --good: #98d5b3;
+      --bad: #ffb49e;
+      --bad-soft: #452820;
+      --line: rgba(244, 246, 248, 0.14);
+      --soft: rgba(217, 135, 99, 0.14);
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.36);
+      --field: #191d22;
     }
 
     * { box-sizing: border-box; }
@@ -54,1569 +52,1051 @@
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 45%, #ffffff 100%);
-      color: var(--text);
-      line-height: 1.5;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 10%, rgba(214, 169, 93, 0.35), transparent 24rem),
+        radial-gradient(circle at 92% 4%, rgba(70, 50, 70, 0.22), transparent 22rem),
+        linear-gradient(180deg, var(--cream), #f3e2d0 48%, #efe8dc);
       font-size: 18px;
-      transition: background 0.18s ease, color 0.18s ease;
+      line-height: 1.55;
     }
 
     body.dark {
-      background: linear-gradient(180deg, #151617 0%, #1b1e21 45%, #23272b 100%);
+      background:
+        radial-gradient(circle at 8% 10%, rgba(214, 169, 93, 0.16), transparent 24rem),
+        radial-gradient(circle at 92% 4%, rgba(180, 95, 60, 0.20), transparent 22rem),
+        linear-gradient(180deg, #14171a, #1d2126 48%, #15181c);
     }
 
     .page {
-      max-width: 1140px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 28px 18px 80px;
+      padding: 32px 18px 80px;
     }
 
-    .hero,
-    .card,
-    .sticky-tools,
-    .summary-box {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    .hero {
-      padding: 34px 28px;
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
       margin-bottom: 22px;
-    }
-
-    .eyebrow {
-      margin: 0 0 8px 0;
-      color: var(--accent-2);
-      font-size: 14px;
+      color: color-mix(in srgb, var(--ink) 72%, transparent);
+      font-size: 0.92rem;
+      font-weight: 700;
       letter-spacing: 0.02em;
     }
 
-    h1, h2, h3, h4 {
-      margin-top: 0;
-      line-height: 1.2;
-    }
-
-    h1 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 14px; }
-    h2 { font-size: clamp(1.45rem, 2.2vw, 2rem); margin-bottom: 10px; }
-    h3 { font-size: 1.15rem; margin-bottom: 8px; }
-    h4 { font-size: 1rem; margin-bottom: 8px; }
-
-    p { margin: 0 0 14px 0; }
-    .small { font-size: 0.96rem; color: var(--muted); }
-
-    .info-strip {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      margin-top: 18px;
-    }
-
-    .note {
-      border-radius: 18px;
-      padding: 16px 18px;
-      background: color-mix(in srgb, var(--card-strong) 75%, #fff6e8 25%);
-      border: 1px solid color-mix(in srgb, var(--border) 75%, #e8c89f 25%);
-    }
-
-    .note strong { color: var(--warning); }
-
-    .sticky-tools {
-      position: sticky;
-      top: 12px;
-      z-index: 10;
-      padding: 16px 18px;
-      display: grid;
-      grid-template-columns: 1.6fr auto auto auto auto;
-      gap: 10px;
+    .pill {
+      display: inline-flex;
       align-items: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: color-mix(in srgb, var(--paper) 70%, transparent);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+      gap: 22px;
+      margin-bottom: 26px;
+    }
+
+    .hero-main, .hero-card, .section, .source-card, .final-card, .tool-strip, .track-note {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: color-mix(in srgb, var(--paper) 88%, transparent);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main {
+      padding: clamp(34px, 6vw, 70px);
+      min-height: 440px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-main::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      bottom: -100px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--clay) 13%, transparent);
+      border: 1px solid color-mix(in srgb, var(--clay) 22%, transparent);
+    }
+
+    .kicker {
+      color: var(--clay-dark);
+      font-size: 0.8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      margin-bottom: 12px;
+    }
+
+    h1, h2, h3, h4, p { margin-top: 0; }
+
+    h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(3rem, 8vw, 6.7rem);
+      line-height: 0.9;
+      letter-spacing: -0.075em;
+      max-width: 760px;
       margin-bottom: 22px;
     }
 
+    h2 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(2rem, 4vw, 4.3rem);
+      line-height: 0.94;
+      letter-spacing: -0.055em;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.65rem;
+      line-height: 1;
+      letter-spacing: -0.025em;
+      margin-bottom: 10px;
+    }
+
+    h4 { margin-bottom: 8px; }
+
+    p { margin-bottom: 14px; }
+
+    .lede {
+      font-size: clamp(1.08rem, 2vw, 1.32rem);
+      color: var(--muted);
+      max-width: 650px;
+    }
+
+    .hero-card {
+      padding: 26px;
+      background: linear-gradient(155deg, var(--plum), color-mix(in srgb, var(--clay-dark) 92%, black 8%));
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 26px;
+    }
+
+    .hero-card .kicker { color: rgba(255,255,255,0.75); }
+    .hero-card p { color: rgba(255,255,255,0.82); }
+
+    .big-number {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 5.8rem;
+      line-height: 0.9;
+      color: var(--gold);
+    }
+
+    .tool-strip {
+      display: grid;
+      grid-template-columns: minmax(180px, 1fr) auto auto;
+      gap: 10px;
+      align-items: center;
+      margin: 0 0 26px;
+      padding: 9px 10px;
+      border-radius: 24px;
+      background: color-mix(in srgb, var(--paper) 74%, transparent);
+      position: sticky;
+      top: 12px;
+      z-index: 5;
+      backdrop-filter: blur(10px);
+    }
+
     .save-status {
-      font-size: 0.95rem;
       color: var(--good);
+      font-size: 0.95rem;
+      padding-left: 8px;
       min-height: 1.2em;
     }
 
     button {
-      border: none;
+      border: 0;
       border-radius: 999px;
-      padding: 12px 18px;
-      font-size: 0.98rem;
-      font-weight: 700;
+      padding: 11px 16px;
+      font-weight: 850;
+      font-size: 0.95rem;
       cursor: pointer;
-      transition: transform 0.12s ease, opacity 0.12s ease, background 0.18s ease, color 0.18s ease;
+      transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     button:hover { transform: translateY(-1px); }
-    button:active { transform: translateY(0); }
+    button:disabled { cursor: not-allowed; opacity: 0.48; transform: none; }
+
+    .primary { background: var(--ink); color: var(--paper); }
+    .secondary { background: var(--soft); color: var(--clay-dark); border: 1px solid color-mix(in srgb, var(--clay) 24%, transparent); }
+    .danger { background: var(--bad-soft); color: var(--bad); border: 1px solid color-mix(in srgb, var(--bad) 30%, transparent); }
 
     button:focus-visible,
     input:focus-visible,
     textarea:focus-visible,
-    select:focus-visible {
-      outline: 3px solid #b98b54;
-      outline-offset: 2px;
+    select:focus-visible,
+    .choice-card:focus-visible {
+      outline: 3px solid color-mix(in srgb, var(--gold) 85%, white 15%);
+      outline-offset: 3px;
     }
 
-    .btn-primary { background: var(--accent); color: white; }
-
-    .btn-secondary {
-      background: var(--accent-soft);
-      color: var(--text);
-      border: 1px solid color-mix(in srgb, var(--border) 65%, #ead9c5 35%);
+    .section-grid {
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 22px;
+      margin-bottom: 22px;
+      align-items: start;
     }
 
-    .theme-toggle {
-      background: var(--toggle);
-      color: var(--text);
-      border: 1px solid var(--border);
+    .section { padding: clamp(24px, 4vw, 34px); }
+
+    .workspace .section {
+      position: relative;
     }
 
-    .grid { display: grid; gap: 20px; }
+    .workspace .section + .section::before,
+    .workspace .section + .final-card::before,
+    .workspace .final-card::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: 6%;
+      right: 6%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--clay) 30%, transparent), transparent);
+    }
+
+    .workspace .final-card {
+      position: relative;
+    }
+
+    .section.dark {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .section.dark p { color: color-mix(in srgb, var(--paper) 72%, transparent); }
 
     .track-grid {
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
     }
 
-    .track-option {
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      background: var(--card-strong);
-      padding: 18px;
-      cursor: pointer;
-      min-height: 142px;
+    .choice-card {
+      min-height: 180px;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 22px;
+      background: var(--paper);
+      color: var(--ink);
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease, background 0.18s ease;
+      justify-content: space-between;
+      text-align: left;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     }
 
-    .track-option:hover {
-      transform: translateY(-2px);
-      border-color: #d4b38b;
-      box-shadow: 0 8px 20px rgba(84, 51, 18, 0.08);
+    .choice-card:hover,
+    .choice-card.active {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(40, 25, 15, 0.12);
+      border-color: var(--clay);
     }
 
-    .track-option.active {
-      border: 2px solid var(--accent);
-      background: color-mix(in srgb, var(--card-strong) 84%, #fff4e7 16%);
+    .choice-card.active {
+      background: linear-gradient(145deg, color-mix(in srgb, var(--paper) 80%, var(--gold) 20%), var(--paper));
     }
 
-    .track-option .track-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-    }
+    .choice-card h3 { margin-bottom: 10px; }
 
-    .chooser-box,
-    .track-summary,
-    .option-card,
-    .group-box,
-    .source-card,
-    .summary-output {
-      background: var(--card-strong);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-    }
-
-    .card {
-      padding: 28px;
-      margin-bottom: 22px;
-    }
-
-    .hidden { display: none !important; }
-
-    .section-tag {
-      display: inline-block;
+    .tag {
+      color: var(--sage);
+      font-weight: 900;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
       margin-bottom: 10px;
-      font-size: 0.88rem;
-      color: var(--accent-2);
-      background: color-mix(in srgb, var(--card-strong) 65%, #f7efe5 35%);
-      padding: 6px 10px;
-      border-radius: 999px;
+    }
+
+    .track-note {
+      margin-bottom: 22px;
+      padding: 22px;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--paper) 80%, var(--gold) 20%), var(--paper));
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: 240px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .workspace main {
+      display: grid;
+      gap: 38px;
+    }
+
+    .side-nav {
+      position: sticky;
+      top: 102px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .side-nav a {
+      display: block;
+      text-decoration: none;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 13px 14px;
+      background: color-mix(in srgb, var(--paper) 82%, transparent);
+      font-weight: 900;
+    }
+
+    .side-nav a span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-weight: 400;
+      font-size: 0.9rem;
     }
 
     .field-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px 18px;
+      gap: 16px;
     }
 
-    .field-grid.one-col { grid-template-columns: 1fr; }
+    .field-grid.one { grid-template-columns: 1fr; }
 
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+    .field { display: grid; gap: 7px; }
 
     label {
-      font-weight: 700;
-      font-size: 0.98rem;
+      font-weight: 850;
+      font-size: 0.97rem;
     }
 
     input,
     textarea,
     select {
       width: 100%;
-      border: 1px solid color-mix(in srgb, var(--border) 75%, #d9cdbc 25%);
-      border-radius: 14px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
       padding: 13px 14px;
-      font-size: 1rem;
-      color: var(--text);
       background: var(--field);
-      font-family: inherit;
+      color: var(--ink);
+      font: inherit;
     }
 
-    textarea {
-      min-height: 96px;
-      resize: vertical;
-    }
-
-    .path-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: color-mix(in srgb, var(--card-strong) 70%, #fff7ed 30%);
-      border: 1px solid color-mix(in srgb, var(--border) 60%, #efd5b4 40%);
-      color: var(--accent);
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-weight: 700;
-      font-size: 0.92rem;
-    }
-
-    .summary-box {
-      padding: 24px;
-      margin-top: 18px;
-    }
-
-    .summary-output {
-      white-space: pre-wrap;
-      padding: 18px;
-      min-height: 220px;
-    }
-
-    .progress {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .progress div {
-      border-radius: 999px;
-      background: color-mix(in srgb, var(--border) 70%, #eadfd2 30%);
-      height: 10px;
-      overflow: hidden;
-    }
-
-    .progress span {
-      display: block;
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, #b98347 0%, #d4a062 100%);
-      border-radius: 999px;
-      transition: width 0.2s ease;
-    }
+    textarea { min-height: 96px; resize: vertical; }
 
     .option-list {
       display: grid;
-      gap: 18px;
+      gap: 20px;
       margin-top: 18px;
     }
 
     .option-card {
-      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: var(--paper);
+      padding: 24px;
+      box-shadow: 0 16px 44px rgba(40, 25, 15, 0.08);
     }
 
-    .option-head {
+    .option-header {
       display: flex;
       justify-content: space-between;
-      align-items: start;
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-
-    .option-title {
-      margin: 0;
-      font-size: 1.08rem;
-      font-weight: 700;
-    }
-
-    .group-stack {
-      display: grid;
       gap: 16px;
-    }
-
-    .group-box {
-      padding: 18px;
-      background: color-mix(in srgb, var(--card-strong) 82%, var(--subtle) 18%);
-    }
-
-    .group-label {
-      display: inline-block;
-      margin-bottom: 12px;
-      padding: 6px 10px;
-      font-size: 0.86rem;
-      border-radius: 999px;
-      background: color-mix(in srgb, var(--card-strong) 55%, #f6eadc 45%);
-      color: var(--accent-2);
-    }
-
-    .source-card {
-      padding: 16px;
-      margin-top: 16px;
-      background: color-mix(in srgb, var(--card-strong) 86%, #fbf5ee 14%);
+      align-items: start;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     .source-list {
       display: grid;
-      gap: 12px;
-      margin-top: 12px;
+      gap: 16px;
+      margin-top: 18px;
     }
 
-    .source-item {
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 14px;
-      background: var(--card-strong);
+    .source-card {
+      padding: 22px;
+      background: color-mix(in srgb, var(--paper) 88%, var(--gold) 12%);
+      box-shadow: none;
     }
 
-    .source-item-head {
+    .source-card.invalid {
+      border-color: color-mix(in srgb, var(--bad) 60%, var(--line) 40%);
+      background: var(--bad-soft);
+    }
+
+    .source-head {
       display: flex;
       justify-content: space-between;
       align-items: start;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .source-guide {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px;
-      margin-bottom: 10px;
+      border-radius: 24px;
+      padding: 14px;
+      background: color-mix(in srgb, var(--sage) 13%, transparent);
+      border: 1px solid color-mix(in srgb, var(--sage) 24%, transparent);
+      margin-bottom: 16px;
     }
 
-    .source-item-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin: 0;
+    .source-guide div {
+      border-right: 1px solid color-mix(in srgb, var(--sage) 25%, transparent);
+      padding-right: 10px;
     }
 
-    .helper {
-      color: var(--muted);
+    .source-guide div:last-child { border-right: 0; }
+
+    .source-guide strong {
+      display: block;
+      color: color-mix(in srgb, var(--sage) 68%, var(--ink) 32%);
+      margin-bottom: 4px;
       font-size: 0.92rem;
     }
 
-    .source-warning {
-      background: color-mix(in srgb, var(--card-strong) 74%, #fff0de 26%);
-      border: 1px solid color-mix(in srgb, var(--border) 55%, #e7c297 45%);
+    .source-guide p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .validation-message {
+      display: none;
+      margin-top: 14px;
       border-radius: 18px;
       padding: 14px 16px;
-      margin-bottom: 16px;
-      color: var(--text);
+      color: var(--bad);
+      background: var(--bad-soft);
+      border: 1px solid color-mix(in srgb, var(--bad) 36%, transparent);
+      font-weight: 760;
     }
 
-    .mini-checklist {
-      margin: 12px 0 0 0;
-      padding-left: 18px;
+    .source-card.invalid .validation-message { display: block; }
+
+    .blocker {
+      display: none;
+      border-radius: 20px;
+      padding: 15px 17px;
+      color: var(--bad);
+      background: var(--bad-soft);
+      border: 1px solid color-mix(in srgb, var(--bad) 36%, transparent);
+      font-weight: 800;
+      margin-bottom: 18px;
     }
 
-    .mini-checklist li { margin-bottom: 8px; }
+    .blocker.show { display: block; }
 
-    .remove-btn {
-      background: var(--danger-bg);
-      color: var(--danger-text);
-      border: 1px solid color-mix(in srgb, var(--border) 55%, #edd0c7 45%);
-      font-size: 0.92rem;
-      padding: 9px 14px;
+    .final-card {
+      padding: clamp(24px, 4vw, 36px);
+      background: linear-gradient(135deg, color-mix(in srgb, var(--paper) 92%, transparent), color-mix(in srgb, var(--paper-2) 92%, transparent));
+      margin-top: 0;
     }
 
+    .final-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .summary-output {
+      min-height: 300px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--field);
+      padding: 20px;
+      white-space: pre-wrap;
+      color: var(--ink);
+      font-size: 0.98rem;
+    }
+
+    .hidden { display: none !important; }
     .print-only { display: none; }
 
-    @media (max-width: 900px) {
-      .sticky-tools { grid-template-columns: 1fr; }
-      .field-grid { grid-template-columns: 1fr; }
-      .page { padding-left: 14px; padding-right: 14px; }
-      .option-head,
-      .source-item-head { flex-direction: column; }
+    @media (max-width: 980px) {
+      .hero, .section-grid, .workspace, .final-grid { grid-template-columns: 1fr; }
+      .side-nav { position: static; }
+      .tool-strip { grid-template-columns: 1fr; border-radius: 26px; }
+      .track-grid, .field-grid, .source-guide { grid-template-columns: 1fr; }
+      .source-guide div { border-right: 0; border-bottom: 1px solid color-mix(in srgb, var(--sage) 25%, transparent); padding: 0 0 10px; }
+      .source-guide div:last-child { border-bottom: 0; padding-bottom: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { scroll-behavior: auto !important; transition: none !important; }
     }
 
     @media print {
-      body,
-      body.dark {
-        background: white !important;
-        color: black !important;
-        font-size: 12pt;
-      }
-
-      .hero,
-      .card,
-      .summary-box,
-      .sticky-tools,
-      .option-card,
-      .group-box,
-      .source-card,
-      .summary-output,
-      .source-item {
-        background: white !important;
+      body, body.dark { background: white !important; color: black !important; font-size: 12pt; }
+      .screen-only, .tool-strip, .side-nav, .track-grid, .remove-source, .add-source { display: none !important; }
+      .hero-main, .hero-card, .section, .track-note, .final-card, .option-card, .source-card, .summary-output {
         box-shadow: none !important;
-        border: 1px solid #cfcfcf !important;
-      }
-
-      .sticky-tools,
-      .track-grid,
-      .screen-only,
-      .remove-btn,
-      .add-source-btn,
-      .helper-screen,
-      #trackChooserNote {
-        display: none !important;
-      }
-
-      .print-only { display: block; }
-
-      .page {
-        max-width: 100%;
-        padding: 0;
-      }
-
-      textarea,
-      input,
-      select {
-        border: 1px solid #ccc !important;
         background: white !important;
+        border: 1px solid #bbb !important;
         color: black !important;
       }
-
-      .summary-box {
-        page-break-inside: avoid;
-      }
-
-      .option-card,
-      .group-box,
-      .source-item {
-        page-break-inside: avoid;
-      }
+      .page { max-width: none; padding: 0; }
+      .hero { grid-template-columns: 1fr; }
+      .workspace { display: block; }
+      .option-card, .source-card, .final-card { page-break-inside: avoid; }
+      .print-only { display: block; }
     }
   </style>
 </head>
 <body>
   <div class="page">
+    <div class="topbar screen-only">
+      <div class="pill">ENG 101 · Research Essay</div>
+      <div class="pill">Week 1 Planning Studio</div>
+    </div>
+
     <section class="hero">
-      <p class="eyebrow">ENG 101 Research Essay · Week 1</p>
-      <h1>Career Path Timeline Worksheet · Week 1</h1>
-      <p>This page covers the first part of your research essay planning. This week is focused on sections 1–3 of the original worksheet: your current academic standing, a comparison of real next-step programs or pathways, and the highest possible level of education, training, certification, license, rank, or advancement in the field.</p>
-
-      <div class="info-strip">
-        <div class="note">
-          <strong>Important source rule:</strong> when you record cost, funding, scholarships, tuition, aid, deadlines, or admissions requirements, get that information from the actual school, program, branch, training center, union, or organization page whenever possible.
-        </div>
-        <div class="note">
-          <strong>Specific links only:</strong> save the exact webpage title and the exact page-specific link where you found your information. Do not paste only a homepage or general website link.
-        </div>
-        <div class="note">
-          <strong>Saving your work:</strong> this page saves your writing in this browser on this device. You should still use the PDF, copy, or download buttons before you leave the page.
+      <div class="hero-main">
+        <div>
+          <div class="kicker">Career Path Research</div>
+          <h1>Map the path before you write the essay.</h1>
+          <p class="lede">Use this guided research space to collect the first pieces of your essay: where you are now, what your next step could look like, and what the highest level of your field might require.</p>
         </div>
       </div>
 
-      <div class="progress" aria-hidden="true">
-        <div><span id="prog1"></span></div>
-        <div><span id="prog2"></span></div>
-        <div><span id="prog3"></span></div>
-        <div><span id="prog4"></span></div>
+      <aside class="hero-card">
+        <div>
+          <div class="kicker">This week</div>
+          <div class="big-number">01</div>
+          <h2 style="font-size:2.6rem; color:white;">Choose and compare.</h2>
+          <p>You will compare real options, not general ideas. Use actual school, program, training, branch, union, licensing, or organization pages.</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="tool-strip screen-only" aria-label="Page tools">
+      <div class="save-status" id="saveStatus">Ready. Your work saves in this browser.</div>
+      <button class="secondary" type="button" id="themeToggle">Dark mode</button>
+      <button class="primary" type="button" id="printBtn">Print / Save as PDF</button>
+    </section>
+
+    <section class="section-grid" id="trackSection">
+      <div class="section dark">
+        <div class="kicker">Start here</div>
+        <h2>Choose one research path.</h2>
+        <p>You are not choosing your whole future. You are choosing one direction to research for this assignment.</p>
+      </div>
+      <div class="track-grid" id="trackGrid" role="radiogroup" aria-label="Career research track options">
+        <button class="choice-card" type="button" data-track="transfer" role="radio" aria-checked="false">
+          <div><div class="tag">Path 01</div><h3>Transfer or university</h3><p>Compare bachelor’s programs and later advanced education.</p></div>
+        </button>
+        <button class="choice-card" type="button" data-track="trades" role="radio" aria-checked="false">
+          <div><div class="tag">Path 02</div><h3>Trades or licensing</h3><p>Compare training, apprenticeships, certification, or license routes.</p></div>
+        </button>
+        <button class="choice-card" type="button" data-track="military" role="radio" aria-checked="false">
+          <div><div class="tag">Path 03</div><h3>Military</h3><p>Compare entry, training, education benefits, and advancement.</p></div>
+        </button>
+        <button class="choice-card" type="button" data-track="business" role="radio" aria-checked="false">
+          <div><div class="tag">Path 04</div><h3>Business</h3><p>Compare support, training, licensing, or education for a business goal.</p></div>
+        </button>
       </div>
     </section>
 
-    <section class="sticky-tools screen-only">
-      <div class="save-status" id="saveStatus">Ready to save your work on this device.</div>
-      <button class="theme-toggle" type="button" id="themeToggle">Dark mode</button>
-      <button class="btn-secondary" type="button" id="copySummaryBtn">Copy for Canvas</button>
-      <button class="btn-secondary" type="button" id="downloadTxtBtn">Download Text</button>
-      <button class="btn-primary" type="button" id="printBtn">Print / Save as PDF</button>
-    </section>
+    <div class="track-note hidden" id="trackNote">
+      <div class="kicker">Selected path</div>
+      <h3 id="trackLabel">No path selected yet</h3>
+      <p id="trackDescription" class="lede" style="margin-bottom:0;"></p>
+    </div>
 
-    <section class="card">
-      <span class="section-tag">Choose your track</span>
-      <h2>Which path best fits what you want to research right now?</h2>
-      <p class="small">You are not locking yourself into a life decision. You are choosing one path to research for this assignment so you can gather the information needed for the opening sections of your essay.</p>
+    <div class="workspace hidden" id="workspace">
+      <nav class="side-nav screen-only" aria-label="Worksheet sections">
+        <a href="#section1">1. Current standing <span>Where you are now</span></a>
+        <a href="#section2">2. Next step <span>Compare two options</span></a>
+        <a href="#section3">3. Highest level <span>How far this path can go</span></a>
+        <a href="#summarySection">Final notes <span>Review and print</span></a>
+      </nav>
 
-      <div class="grid track-grid" id="trackGrid" role="radiogroup" aria-label="Career research track options">
-        <div class="track-option" data-track="transfer" tabindex="0" role="radio" aria-checked="false">
-          <div class="track-title">Transfer / university path</div>
-          <div class="small">Compare real bachelor’s programs and then look at advanced education in the field.</div>
-        </div>
-        <div class="track-option" data-track="grad" tabindex="0" role="radio" aria-checked="false">
-          <div class="track-title">Graduate or professional school path</div>
-          <div class="small">Compare bachelor’s paths that connect to graduate or professional study.</div>
-        </div>
-        <div class="track-option" data-track="trades" tabindex="0" role="radio" aria-checked="false">
-          <div class="track-title">Trades / apprenticeship / licensing path</div>
-          <div class="small">Compare real training, apprenticeship, certification, or licensing routes.</div>
-        </div>
-        <div class="track-option" data-track="military" tabindex="0" role="radio" aria-checked="false">
-          <div class="track-title">Military path</div>
-          <div class="small">Compare real military entry and training paths and later advancement options.</div>
-        </div>
-        <div class="track-option" data-track="business" tabindex="0" role="radio" aria-checked="false">
-          <div class="track-title">Business / entrepreneur path</div>
-          <div class="small">Compare real education, licensing, training, or support paths connected to a business goal.</div>
-        </div>
-        <div class="track-option" data-track="notsure" tabindex="0" role="radio" aria-checked="false">
-          <div class="track-title">Not sure yet</div>
-          <div class="small">Start here if you need help choosing one path to research for this assignment.</div>
-        </div>
-      </div>
-
-      <div id="trackChooserNote" class="chooser-box hidden" style="margin-top: 18px; padding: 22px;">
-        <h3>Choose one path to explore for this assignment</h3>
-        <p>You do not need to know your forever career yet. Pick one path that seems interesting, realistic, useful, or worth learning more about so you can complete this week’s research.</p>
-        <div class="field-grid">
-          <div class="field">
-            <label for="notsurePath">For this assignment, I want to explore:</label>
-            <select id="notsurePath" data-save>
-              <option value="">Select one</option>
-              <option value="transfer">Transfer / university path</option>
-              <option value="grad">Graduate or professional school path</option>
-              <option value="trades">Trades / apprenticeship / licensing path</option>
-              <option value="military">Military path</option>
-              <option value="business">Business / entrepreneur path</option>
-            </select>
+      <main>
+        <section class="section" id="section1">
+          <div class="kicker">Section 1</div>
+          <h2>Current academic standing</h2>
+          <p class="lede">Start with where you are now. These notes help you build the opening context for your essay.</p>
+          <div class="field-grid">
+            <div class="field"><label for="currentProgram">Current program</label><input id="currentProgram" data-save placeholder="Example: AA-DTA, pre-nursing, welding certificate"></div>
+            <div class="field"><label for="currentSchool">Current school</label><input id="currentSchool" data-save placeholder="Example: Green River College"></div>
+            <div class="field"><label for="careerGoal">Career or field</label><input id="careerGoal" data-save placeholder="Example: teacher, RN, electrician, small business owner"></div>
+            <div class="field"><label for="currentStage">Current stage</label><input id="currentStage" data-save placeholder="Example: first year, finishing prerequisites, exploring options"></div>
           </div>
-          <div class="field">
-            <label for="notsureConfidence">How sure are you about this choice?</label>
-            <select id="notsureConfidence" data-save>
-              <option value="">Select one</option>
-              <option>Very unsure</option>
-              <option>Somewhat unsure</option>
-              <option>Somewhat sure</option>
-              <option>Very sure</option>
-            </select>
+        </section>
+
+        <section class="section" id="section2">
+          <div class="kicker">Section 2</div>
+          <h2 id="section2Title">Compare two next-step options</h2>
+          <p class="lede" id="section2Intro">Find two real options that could be your next step.</p>
+          <div class="blocker" id="sourceBlocker">One or more source links need to be fixed before you can copy, download, or print.</div>
+          <div class="option-list" id="section2Options"></div>
+        </section>
+
+        <section class="section" id="section3">
+          <div class="kicker">Section 3</div>
+          <h2 id="section3Title">Research the highest level of this field</h2>
+          <p class="lede" id="section3Intro">Look beyond the entry-level version of this career. What does advancement look like?</p>
+          <div class="option-list" id="section3Options"></div>
+          <div class="field" style="margin-top:18px;"><label for="reflection">What surprised you most when you researched this path?</label><textarea id="reflection" data-save></textarea></div>
+        </section>
+
+        <section class="final-card" id="summarySection">
+          <div class="final-grid">
+            <div>
+              <div class="kicker">Final copy</div>
+              <h2>Your notes become the submission.</h2>
+              <p class="lede">This clean version is what you can review and save as a PDF after all blocked sources are fixed.</p>
+              <div class="blocker" id="summaryBlocker">Fix the blocked source entries before printing or saving as a PDF.</div>
+            </div>
+            <div class="summary-output" id="summaryOutput">Choose a path to begin.</div>
           </div>
-        </div>
-        <div class="field" style="margin-top: 16px;">
-          <label for="notsureReason">Why did you choose this path to explore right now?</label>
-          <textarea id="notsureReason" data-save placeholder="You might choose something that matches your strengths, a class you like, a job you have wondered about, something financially realistic, or a path you want to learn more about."></textarea>
-        </div>
-        <button class="btn-primary" type="button" id="applyNotsurePath" style="margin-top: 16px;">Use this path for the worksheet</button>
-      </div>
-    </section>
-
-    <section class="card hidden" id="trackSummaryCard">
-      <span class="section-tag">Your selected track</span>
-      <div class="track-summary" style="padding: 22px;">
-        <div class="path-pill" id="currentTrackPill">No track selected yet</div>
-        <p id="currentTrackDescription" style="margin-top: 14px;">Choose a track above to begin.</p>
-      </div>
-    </section>
-
-    <section class="card hidden" id="part1Card">
-      <span class="section-tag">Section 1</span>
-      <h2>Current Academic Standing</h2>
-      <p class="small">Start by explaining where you are now. This information helps set up the opening of your essay.</p>
-
-      <div class="field-grid">
-        <div class="field">
-          <label for="currentProgram">Program name</label>
-          <input id="currentProgram" data-save type="text" placeholder="Example: AA-DTA, pre-nursing, welding certificate" />
-        </div>
-        <div class="field">
-          <label for="currentSchool">School name</label>
-          <input id="currentSchool" data-save type="text" placeholder="Example: Green River College" />
-        </div>
-        <div class="field">
-          <label for="careerGoal">Career or field you want to research</label>
-          <input id="careerGoal" data-save type="text" placeholder="Example: elementary teacher, RN, electrician, occupational therapist" />
-        </div>
-        <div class="field">
-          <label for="currentStage">What stage are you at right now?</label>
-          <input id="currentStage" data-save type="text" placeholder="Example: first year, finishing prerequisites, exploring options" />
-        </div>
-      </div>
-
-      <div class="field-grid one-col" style="margin-top: 16px;">
-        <div class="field">
-          <label for="skillsHave">Key courses, experiences, or skills gained so far</label>
-          <textarea id="skillsHave" data-save></textarea>
-        </div>
-        <div class="field">
-          <label for="skillsNeed">Key courses, experiences, or skills still needed</label>
-          <textarea id="skillsNeed" data-save></textarea>
-        </div>
-        <div class="field">
-          <label for="transferPlan">Transfer plan or next-step plan, if applicable</label>
-          <textarea id="transferPlan" data-save></textarea>
-        </div>
-        <div class="field">
-          <label for="currentConnections">Extracurriculars, internships, work, military experience, volunteering, or other relevant experience</label>
-          <textarea id="currentConnections" data-save></textarea>
-        </div>
-      </div>
-    </section>
-
-    <section class="card hidden" id="part2Card">
-      <span class="section-tag">Section 2</span>
-      <h2 id="part2Title">Program Comparison</h2>
-      <p class="small" id="part2Intro">Compare real next-step programs or pathways you might actually attend or pursue.</p>
-
-      <div class="source-warning">
-        <strong>For this section:</strong> compare real schools, programs, branches, organizations, unions, training centers, or other actual pathways.
-        <ul class="mini-checklist">
-          <li>Use the exact page title.</li>
-          <li>Use the exact page-specific link.</li>
-          <li>Do not paste only a homepage.</li>
-          <li>For cost, funding, deadlines, or admissions, try to use the actual institution or organization page.</li>
-        </ul>
-      </div>
-
-      <div id="part2Options" class="option-list"></div>
-    </section>
-
-    <section class="card hidden" id="part3Card">
-      <span class="section-tag">Section 3</span>
-      <h2 id="part3Title">Highest Possible Level in This Field</h2>
-      <p class="small" id="part3Intro">Look beyond the entry-level version of this career and research how far this field can go.</p>
-
-      <div class="source-warning">
-        <strong>For this section:</strong> if you record cost, tuition, scholarships, assistantships, financial aid, grants, paid training, benefits, or exam fees, try to use the actual school, program, organization, licensing body, union, or government page connected to that higher level.
-      </div>
-
-      <div id="part3Options" class="option-list"></div>
-
-      <div class="group-box" style="margin-top: 18px;">
-        <span class="group-label">Your reflection</span>
-        <div class="field">
-          <label for="highestLevelReflection">What surprised you most when you researched the highest possible level of this path?</label>
-          <textarea id="highestLevelReflection" data-save></textarea>
-        </div>
-      </div>
-    </section>
-
-    <section class="summary-box" id="summarySection">
-      <span class="section-tag">Final summary</span>
-      <h2>Your Week 1 Notes</h2>
-      <p class="small">This box turns your responses into a clean draft you can copy or save as a PDF.</p>
-      <div class="summary-output" id="summaryOutput">Choose a track and begin filling in the page. Your summary will appear here.</div>
-      <div class="print-only" style="margin-top: 18px; color: #444;">This page was prepared from the interactive Week 1 career path research worksheet.</div>
-    </section>
+          <p class="print-only">Prepared from the Week 1 Career Path Research page.</p>
+        </section>
+      </main>
+    </div>
   </div>
 
-  <template id="optionCardTemplate">
-    <div class="option-card">
-      <div class="option-head">
-        <div>
-          <p class="option-title option-heading"></p>
-          <p class="helper option-helper"></p>
-        </div>
-      </div>
-
-      <div class="group-stack">
-        <div class="group-box basic-group"></div>
-        <div class="group-box cost-group"></div>
-      </div>
-    </div>
-  </template>
-
-  <template id="sourceItemTemplate">
-    <div class="source-item">
-      <div class="source-item-head">
-        <p class="source-item-title">Source <span class="source-number"></span></p>
-        <button class="remove-btn remove-source-btn" type="button">Remove</button>
-      </div>
-      <div class="field-grid source-fields"></div>
-    </div>
-  </template>
-
   <script>
-    const STORAGE_KEY = 'careerPathWeek1_v4';
-    const THEME_KEY = 'careerPathWeek1_theme_v4';
+    const STORAGE_KEY = 'career_path_week1_microsite_test_v1';
+    const THEME_KEY = 'career_path_week1_microsite_theme_v1';
 
-    const trackGrid = document.getElementById('trackGrid');
-    const trackSummaryCard = document.getElementById('trackSummaryCard');
-    const currentTrackPill = document.getElementById('currentTrackPill');
-    const currentTrackDescription = document.getElementById('currentTrackDescription');
-    const chooserBox = document.getElementById('trackChooserNote');
-    const applyNotsurePathBtn = document.getElementById('applyNotsurePath');
-    const saveStatus = document.getElementById('saveStatus');
-    const part1Card = document.getElementById('part1Card');
-    const part2Card = document.getElementById('part2Card');
-    const part3Card = document.getElementById('part3Card');
-    const part2Options = document.getElementById('part2Options');
-    const part3Options = document.getElementById('part3Options');
-    const summaryOutput = document.getElementById('summaryOutput');
-    const themeToggle = document.getElementById('themeToggle');
-
-    const tracks = {
+    const trackCopy = {
       transfer: {
-        label: 'Transfer / university path',
-        description: 'This version compares real bachelor’s programs, then asks you to look at advanced education in the field.',
-        part2Title: 'School Comparison',
-        part2Intro: 'Compare real bachelor’s degree programs or universities you might actually attend.',
-        part2OptionLabel: 'School',
-        part2OptionHelper: 'Compare a real school or program you might actually apply to.',
-        part2BasicFields: [
-          ['School name', 'school'],
-          ['Program name', 'program'],
-          ['Program length', 'length'],
-          ['What this path leads to', 'outcomes'],
-          ['Admission requirements', 'admission'],
-          ['Letters of recommendation', 'letters'],
-          ['Required tests', 'tests'],
-          ['Application deadline', 'deadline']
-        ],
-        part2CostFields: [
-          ['Application cost or waiver', 'cost'],
-          ['Funding options from this actual school or program', 'funding'],
-          ['Specific scholarships, aid, or support listed for this option', 'scholarships']
-        ],
-        part2SourceTypes: ['Program page','Admissions page','Tuition or cost page','Financial aid or scholarship page','Deadline page','Other institution page'],
-        part3Title: 'Advanced Education Comparison',
-        part3Intro: 'Compare two higher-level education options connected to this field.',
-        part3OptionLabel: 'Advanced education option',
-        part3OptionHelper: 'This might be a master’s, doctorate, professional degree, or other higher-level academic path.',
-        part3BasicFields: [
-          ['School or institution name', 'school'],
-          ['Advanced program name', 'program'],
-          ['What level this is', 'level'],
-          ['What kind of graduate or advanced study this is', 'type'],
-          ['What this option could qualify someone for', 'outcomes']
-        ],
-        part3CostFields: [
-          ['Cost, tuition, or fees', 'cost'],
-          ['Funding, assistantships, scholarships, or aid', 'funding']
-        ],
-        part3SourceTypes: ['Program page','Admissions page','Tuition or cost page','Financial aid or scholarship page','Other institution page']
+        label: 'Transfer or university path',
+        description: 'Compare two real bachelor’s programs or transfer options, then look at advanced education in the field.',
+        section2Title: 'Compare two schools or programs',
+        section2Intro: 'Find two real bachelor’s degree programs, transfer schools, or university programs you might actually pursue.',
+        optionName: 'School or program',
+        optionPlaceholder: 'Example: UW Tacoma Education, BA',
+        highestTitle: 'Advanced education or highest credential',
+        highestPlaceholder: 'Example: Master in Teaching, PhD, professional degree, advanced certificate',
+        requirementsLabel: 'Requirements (GPA, prerequisites, or letters of recommendation)',
+        deadlineLabel: 'Application deadline'
       },
-
-      grad: {
-        label: 'Graduate or professional school path',
-        description: 'This version compares bachelor’s paths that lead into graduate or professional education, then compares advanced programs.',
-        part2Title: 'Bachelor’s Program Comparison',
-        part2Intro: 'Compare real bachelor’s programs that could lead toward your graduate or professional goal.',
-        part2OptionLabel: 'School',
-        part2OptionHelper: 'Compare a real undergraduate program that connects to your longer-term goal.',
-        part2BasicFields: [
-          ['School name', 'school'],
-          ['Program name', 'program'],
-          ['Program length', 'length'],
-          ['How this path connects to graduate or professional study', 'outcomes'],
-          ['Admission requirements', 'admission'],
-          ['Letters of recommendation', 'letters'],
-          ['Required tests', 'tests'],
-          ['Application deadline', 'deadline']
-        ],
-        part2CostFields: [
-          ['Application cost or waiver', 'cost'],
-          ['Funding options from this actual school or program', 'funding'],
-          ['Specific scholarships, aid, or support listed for this option', 'scholarships']
-        ],
-        part2SourceTypes: ['Program page','Admissions page','Tuition or cost page','Financial aid or scholarship page','Deadline page','Other institution page'],
-        part3Title: 'Graduate or Professional Program Comparison',
-        part3Intro: 'Compare two real advanced programs connected to this field.',
-        part3OptionLabel: 'Graduate or professional program',
-        part3OptionHelper: 'Compare a real advanced program you could potentially pursue later.',
-        part3BasicFields: [
-          ['School or institution name', 'school'],
-          ['Graduate or professional program name', 'program'],
-          ['What level this is', 'level'],
-          ['What kind of graduate or professional study this is', 'type'],
-          ['What this option could qualify someone for', 'outcomes']
-        ],
-        part3CostFields: [
-          ['Cost, tuition, or fees', 'cost'],
-          ['Funding, assistantships, scholarships, or aid', 'funding']
-        ],
-        part3SourceTypes: ['Program page','Admissions page','Tuition or cost page','Financial aid or scholarship page','Other institution page']
-      },
-
       trades: {
-        label: 'Trades / apprenticeship / licensing path',
-        description: 'This version compares real training paths, then compares advanced certification, licensing, or higher-level trade advancement.',
-        part2Title: 'Training / Apprenticeship / Licensing Comparison',
-        part2Intro: 'Compare real programs, unions, training centers, certifications, or apprenticeship pathways you might actually pursue.',
-        part2OptionLabel: 'Pathway',
-        part2OptionHelper: 'Compare a real training, union, apprenticeship, or licensing route.',
-        part2BasicFields: [
-          ['Program, organization, union, or training center name', 'school'],
-          ['Program or pathway name', 'program'],
-          ['Program or apprenticeship length', 'length'],
-          ['License, certification, or outcome this leads to', 'outcomes'],
-          ['Admission or entry requirements', 'admission'],
-          ['Letters of recommendation, if needed', 'letters'],
-          ['Required tests, exams, or assessments', 'tests'],
-          ['Application deadline or cycle', 'deadline']
-        ],
-        part2CostFields: [
-          ['Application cost or fees', 'cost'],
-          ['Funding options or paid training', 'funding'],
-          ['Specific scholarships, grants, or support listed for this option', 'scholarships']
-        ],
-        part2SourceTypes: ['Program page','Admissions page','Cost or fee page','Scholarship or support page','Certification or licensing page','Union or training organization page'],
-        part3Title: 'Advanced Certification / Licensing / Advancement Comparison',
-        part3Intro: 'Compare two higher-level advancement options in this field.',
-        part3OptionLabel: 'Advanced option',
-        part3OptionHelper: 'This might be an advanced license, certification, endorsement, supervisor role, or higher apprenticeship level.',
-        part3BasicFields: [
-          ['Organization or institution name', 'school'],
-          ['Advanced certification, license, or advancement name', 'program'],
-          ['What level this is', 'level'],
-          ['What kind of advanced training or certification this is', 'type'],
-          ['What this option could qualify someone for', 'outcomes']
-        ],
-        part3CostFields: [
-          ['Cost, fees, or exam costs', 'cost'],
-          ['Funding, employer support, union support, or paid access', 'funding']
-        ],
-        part3SourceTypes: ['Certification or licensing page','Program page','Cost or fee page','Union or training organization page','Government page','Other organization page']
+        label: 'Trades, apprenticeship, or licensing path',
+        description: 'Compare real training, apprenticeship, certification, or licensing routes, then look at the highest advancement level in the field.',
+        section2Title: 'Compare two training or apprenticeship options',
+        section2Intro: 'Find two real training, apprenticeship, certificate, union, or licensing routes you could actually pursue.',
+        optionName: 'Training, apprenticeship, or license option',
+        optionPlaceholder: 'Example: Puget Sound Electrical Apprenticeship',
+        highestTitle: 'Highest certification, license, or advancement level',
+        highestPlaceholder: 'Example: journeyman license, master license, inspector role, contractor license',
+        requirementsLabel: 'Requirements or steps (prerequisite course, exam, or work hours)',
+        deadlineLabel: 'Application, registration, or enrollment deadline'
       },
-
       military: {
         label: 'Military path',
-        description: 'This version compares real entry paths, then compares advanced military education, officer, or long-term advancement options.',
-        part2Title: 'Military Path Comparison',
-        part2Intro: 'Compare real military branches, career fields, or training routes you might actually pursue.',
-        part2OptionLabel: 'Pathway',
-        part2OptionHelper: 'Compare a real branch, role, rate, MOS, training route, or program.',
-        part2BasicFields: [
-          ['Branch or organization name', 'school'],
-          ['Role, rate, MOS, or pathway name', 'program'],
-          ['Training length', 'length'],
-          ['Long-term opportunities or outcomes', 'outcomes'],
-          ['Entry requirements', 'admission'],
-          ['Letters of recommendation, if needed', 'letters'],
-          ['Required tests', 'tests'],
-          ['Application timeline or deadline', 'deadline']
-        ],
-        part2CostFields: [
-          ['Application cost or fees', 'cost'],
-          ['Funding, benefits, or education support', 'funding'],
-          ['Specific scholarships or special support listed for this option', 'scholarships']
-        ],
-        part2SourceTypes: ['Official branch page','Training page','Benefits page','Admissions or eligibility page','Government page','Other military page'],
-        part3Title: 'Advanced Training / Rank / Education Comparison',
-        part3Intro: 'Compare two longer-term advancement options in this field.',
-        part3OptionLabel: 'Advanced option',
-        part3OptionHelper: 'This might be officer training, advanced schooling, rank advancement, or a later educational path.',
-        part3BasicFields: [
-          ['Branch, school, or organization name', 'school'],
-          ['Advanced training, officer path, or advancement name', 'program'],
-          ['What level this is', 'level'],
-          ['What kind of advanced military or educational path this is', 'type'],
-          ['What this option could lead to', 'outcomes']
-        ],
-        part3CostFields: [
-          ['Cost, fees, or required expenses', 'cost'],
-          ['Benefits, GI Bill support, paid training, or access support', 'funding']
-        ],
-        part3SourceTypes: ['Official branch page','Training page','Benefits page','Government page','Other military page']
+        description: 'Compare real entry, branch, training, education benefit, or specialization paths, then look at future advancement.',
+        section2Title: 'Compare two military or training paths',
+        section2Intro: 'Find two real military branch, role, education benefit, or training options connected to your goal.',
+        optionName: 'Branch, role, training, or education path',
+        optionPlaceholder: 'Example: Air Force cybersecurity training',
+        highestTitle: 'Highest rank, specialization, or civilian transition path',
+        highestPlaceholder: 'Example: officer path, advanced specialization, military-funded degree, civilian certification',
+        requirementsLabel: 'Requirements or steps (ASVAB score, age/fitness requirement, or recruiter step)',
+        deadlineLabel: ''
       },
-
       business: {
-        label: 'Business / entrepreneur path',
-        description: 'This version compares real education, training, licensing, or support paths connected to a business goal, then compares higher-level advancement options.',
-        part2Title: 'Education / Training / Licensing Path Comparison',
-        part2Intro: 'Compare real schools, programs, certifications, licenses, incubators, or support organizations connected to your business goal.',
-        part2OptionLabel: 'Pathway',
-        part2OptionHelper: 'Compare a real education, training, licensing, or support option connected to your goal.',
-        part2BasicFields: [
-          ['School, program, or organization name', 'school'],
-          ['Program or pathway name', 'program'],
-          ['Program or training length', 'length'],
-          ['What this path would help you do', 'outcomes'],
-          ['Admission or entry requirements', 'admission'],
-          ['Letters of recommendation, if needed', 'letters'],
-          ['Required tests, permits, or certifications', 'tests'],
-          ['Application deadline or timeline', 'deadline']
-        ],
-        part2CostFields: [
-          ['Application cost, fees, or startup-related cost', 'cost'],
-          ['Funding or support options from this actual program or organization', 'funding'],
-          ['Specific scholarships, grants, or startup support listed for this option', 'scholarships']
-        ],
-        part2SourceTypes: ['Program page','Licensing or permit page','Grant or funding page','Admissions page','Deadline page','Other organization page'],
-        part3Title: 'Advanced Training / Certification / Growth Comparison',
-        part3Intro: 'Compare two higher-level advancement options connected to this field.',
-        part3OptionLabel: 'Advanced option',
-        part3OptionHelper: 'This might be an advanced credential, license, incubator, certification, or growth-related path.',
-        part3BasicFields: [
-          ['School, organization, or institution name', 'school'],
-          ['Advanced program, credential, or pathway name', 'program'],
-          ['What level this is', 'level'],
-          ['What kind of advanced training or certification this is', 'type'],
-          ['What this option could help someone do', 'outcomes']
-        ],
-        part3CostFields: [
-          ['Cost, fees, or related expenses', 'cost'],
-          ['Funding, grants, support, or access options', 'funding']
-        ],
-        part3SourceTypes: ['Program page','Licensing or permit page','Grant or funding page','Other organization page']
+        label: 'Business or entrepreneur path',
+        description: 'Compare real education, training, licensing, funding, or support options connected to a business goal.',
+        section2Title: 'Compare two business training or support options',
+        section2Intro: 'Find two real business classes, training programs, support organizations, licenses, or funding/support options.',
+        optionName: 'Business support, training, license, or education option',
+        optionPlaceholder: 'Example: Venture Business Basics',
+        highestTitle: 'Highest business growth, credential, license, or training option',
+        highestPlaceholder: 'Example: business license, advanced certificate, incubator, funding program, studio ownership path',
+        requirementsLabel: 'Requirements or steps (license, application, or required class)',
+        deadlineLabel: 'Application, registration, or license deadline'
       }
     };
 
-    function loadState() {
-      try {
-        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {
-          fields: {},
-          activeTrack: '',
-          resolvedTrack: '',
-          part2: {},
-          part3: {}
-        };
-      } catch {
-        return {
-          fields: {},
-          activeTrack: '',
-          resolvedTrack: '',
-          part2: {},
-          part3: {}
-        };
-      }
+    let selectedTrack = '';
+
+    const saveStatus = document.getElementById('saveStatus');
+    const sourceBlocker = document.getElementById('sourceBlocker');
+    const summaryBlocker = document.getElementById('summaryBlocker');
+    const summaryOutput = document.getElementById('summaryOutput');
+    const printBtn = document.getElementById('printBtn');
+
+    function fields() {
+      return Array.from(document.querySelectorAll('[data-save]'));
     }
 
-    let state = loadState();
-    let activeTrack = state.activeTrack || '';
-    let resolvedTrack = state.resolvedTrack || '';
+    function sourceTemplate(section, optionNumber, sourceNumber) {
+      return `
+        <article class="source-card" data-source-card data-section="${section}" data-option="${optionNumber}" data-source="${sourceNumber}">
+          <div class="source-head">
+            <div>
+              <div class="kicker">Source ${sourceNumber}</div>
+              <h3>Specific source page</h3>
+            </div>
+            ${sourceNumber > 1 ? '<button class="danger remove-source" type="button">Remove source</button>' : ''}
+          </div>
 
-    function saveState() {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-      const now = new Date();
-      saveStatus.textContent = `Saved on this device at ${now.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}.`;
-      updateSummary();
-      updateProgress();
-    }
+          <div class="source-guide" aria-label="Source field explanation">
+            <div><strong>Webpage title</strong><p>The exact page you used, like Nursing, BSN or Tuition and Fees.</p></div>
+            <div><strong>Website name</strong><p>The larger school, program, branch, organization, union, or licensing site.</p></div>
+            <div><strong>Exact URL</strong><p>The direct page link. It should have something after the main website address, not just the school homepage.</p></div>
+          </div>
 
-    function debounce(fn, wait = 250) {
-      let timeout;
-      return (...args) => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => fn(...args), wait);
-      };
-    }
-
-    const debouncedSave = debounce(saveState, 250);
-
-    function applyTheme(theme) {
-      const dark = theme === 'dark';
-      document.body.classList.toggle('dark', dark);
-      themeToggle.textContent = dark ? 'Light mode' : 'Dark mode';
-      localStorage.setItem(THEME_KEY, theme);
-    }
-
-    function initTheme() {
-      const saved = localStorage.getItem(THEME_KEY) || 'light';
-      applyTheme(saved);
-      themeToggle.addEventListener('click', () => {
-        applyTheme(document.body.classList.contains('dark') ? 'light' : 'dark');
-      });
-    }
-
-    function wireGlobalInputs() {
-      document.querySelectorAll('[data-save]').forEach(el => {
-        const key = el.id;
-        if (state.fields[key] != null) el.value = state.fields[key];
-
-        const update = () => {
-          state.fields[key] = el.value;
-          debouncedSave();
-        };
-
-        el.addEventListener('input', update);
-        el.addEventListener('change', update);
-      });
-    }
-
-    function getField(id) {
-      const el = document.getElementById(id);
-      return el ? el.value.trim() : (state.fields[id] || '').trim();
-    }
-
-    function createEmptySource() {
-      return {
-        title: '',
-        link: '',
-        type: '',
-        info: ''
-      };
-    }
-
-    function createEmptyPart2Option(track) {
-      const cfg = tracks[track];
-      const option = { sources: [createEmptySource(), createEmptySource()] };
-      [...cfg.part2BasicFields, ...cfg.part2CostFields].forEach(([, key]) => option[key] = '');
-      return option;
-    }
-
-    function createEmptyPart3Option(track) {
-      const cfg = tracks[track];
-      const option = { sources: [createEmptySource(), createEmptySource()] };
-      [...cfg.part3BasicFields, ...cfg.part3CostFields].forEach(([, key]) => option[key] = '');
-      return option;
-    }
-
-    function ensureTrackData(track) {
-      if (!track || !tracks[track]) return;
-
-      state.part2 = state.part2 || {};
-      state.part3 = state.part3 || {};
-
-      if (!state.part2[track] || !state.part2[track].length) {
-        state.part2[track] = [createEmptyPart2Option(track), createEmptyPart2Option(track)];
-      }
-
-      if (!state.part3[track] || !state.part3[track].length) {
-        state.part3[track] = [createEmptyPart3Option(track), createEmptyPart3Option(track)];
-      }
-    }
-
-    function setTrack(track) {
-      activeTrack = track;
-      state.activeTrack = track;
-
-      if (track !== 'notsure') {
-        resolvedTrack = track;
-        state.resolvedTrack = track;
-      }
-
-      document.querySelectorAll('.track-option').forEach(card => {
-        const isActive = card.dataset.track === track;
-        card.classList.toggle('active', isActive);
-        card.setAttribute('aria-checked', isActive ? 'true' : 'false');
-      });
-
-      chooserBox.classList.toggle('hidden', track !== 'notsure');
-
-      if (track === 'notsure') {
-        trackSummaryCard.classList.add('hidden');
-        part1Card.classList.add('hidden');
-        part2Card.classList.add('hidden');
-        part3Card.classList.add('hidden');
-        summaryOutput.textContent = 'Choose a path to explore in the Not sure yet box, then continue into that track.';
-      } else {
-        renderTrack(track);
-      }
-
-      saveState();
-    }
-
-    function renderTrack(track) {
-      const cfg = tracks[track];
-      if (!cfg) return;
-
-      ensureTrackData(track);
-
-      trackSummaryCard.classList.remove('hidden');
-      part1Card.classList.remove('hidden');
-      part2Card.classList.remove('hidden');
-      part3Card.classList.remove('hidden');
-
-      currentTrackPill.textContent = cfg.label;
-      currentTrackDescription.textContent = cfg.description;
-      document.getElementById('part2Title').textContent = cfg.part2Title;
-      document.getElementById('part2Intro').textContent = cfg.part2Intro;
-      document.getElementById('part3Title').textContent = cfg.part3Title;
-      document.getElementById('part3Intro').textContent = cfg.part3Intro;
-
-      renderPart2(track);
-      renderPart3(track);
-      updateSummary();
-      updateProgress();
-    }
-
-    function renderFields(container, fields, optionObj, onChange, prefix) {
-      const grid = document.createElement('div');
-      grid.className = 'field-grid';
-
-      fields.forEach(([labelText, key]) => {
-        const wrap = document.createElement('div');
-        wrap.className = 'field';
-
-        const id = `${prefix}_${key}`;
-
-        if (key === 'outcomes') {
-          wrap.innerHTML = `
-            <label for="${id}">${labelText}</label>
-            <textarea id="${id}">${escapeHtml(optionObj[key] || '')}</textarea>
-          `;
-          wrap.querySelector('textarea').addEventListener('input', e => onChange(key, e.target.value));
-        } else {
-          wrap.innerHTML = `
-            <label for="${id}">${labelText}</label>
-            <input id="${id}" type="text" value="${escapeHtml(optionObj[key] || '')}" />
-          `;
-          wrap.querySelector('input').addEventListener('input', e => onChange(key, e.target.value));
-        }
-
-        grid.appendChild(wrap);
-      });
-
-      container.appendChild(grid);
-    }
-
-    function renderSourceBlock(container, optionObj, sourceTypes, onUpdateSource, onAddSource, onRemoveSource, prefix) {
-      const sourceCard = document.createElement('div');
-      sourceCard.className = 'source-card';
-
-      sourceCard.innerHTML = `
-        <h4>Sources used for this option</h4>
-        <p class="helper">Use the exact page title and the exact page-specific link. Add more than one source if you used more than one page.</p>
+          <div class="field-grid">
+            <div class="field">
+              <label>Webpage title</label>
+              <input data-save data-source-title placeholder="Example: Admissions Requirements or Tuition and Fees">
+            </div>
+            <div class="field">
+              <label>Website name</label>
+              <input data-save data-source-site placeholder="Example: University of Washington Tacoma">
+            </div>
+            <div class="field">
+              <label>Exact URL</label>
+              <input data-save data-source-url placeholder="Paste the specific page link here">
+            </div>
+            <div class="field">
+              <label>What information did you get from this page?</label>
+              <select data-save data-source-purpose>
+                <option value="">Select one</option>
+                <option>Program requirements</option>
+                <option>Admissions requirements</option>
+                <option>Cost, tuition, or fees</option>
+                <option>Funding, aid, or scholarships</option>
+                <option>Deadline or application steps</option>
+                <option>Training, certification, or license details</option>
+                <option>Other specific information</option>
+              </select>
+            </div>
+          </div>
+          <div class="validation-message" data-validation-message></div>
+        </article>
       `;
+    }
 
-      const list = document.createElement('div');
-      list.className = 'source-list';
+    function optionTemplate(section, optionNumber, title, placeholder, isHighest) {
+      const prefix = section === 2 ? 'next' : 'high';
+      const track = trackCopy[selectedTrack];
+      return `
+        <article class="option-card" data-option-card data-section="${section}" data-option="${optionNumber}">
+          <div class="option-header">
+            <div>
+              <div class="tag">${section === 2 ? 'Next step' : 'Highest level'} ${optionNumber}</div>
+              <h3>${title}</h3>
+              <p class="lede" style="font-size:1rem; margin-bottom:0;">Use real information from actual pages, not a general career-planning page.</p>
+            </div>
+          </div>
 
-      optionObj.sources.forEach((source, index) => {
-        const template = document.getElementById('sourceItemTemplate');
-        const node = template.content.cloneNode(true);
+          <div class="field-grid">
+            <div class="field"><label>${isHighest ? track.highestTitle : track.optionName}</label><input data-save id="${prefix}${optionNumber}Name" placeholder="${placeholder}"></div>
+            <div class="field"><label>Length or timeline</label><input data-save id="${prefix}${optionNumber}Length" placeholder="Example: 2 years, 4 years, varies, 8000 hours"></div>
+            <div class="field"><label>${track.requirementsLabel}</label><textarea data-save id="${prefix}${optionNumber}Req"></textarea></div>
+            ${track.deadlineLabel ? `<div class="field"><label>${track.deadlineLabel}</label><input data-save id="${prefix}${optionNumber}Deadline" placeholder="Enter the deadline or write Not listed"></div>` : ''}
+            <div class="field"><label>Cost, funding, scholarships, aid, or support</label><textarea data-save id="${prefix}${optionNumber}Cost"></textarea></div>
+          </div>
 
-        node.querySelector('.source-number').textContent = index + 1;
+          <div class="source-list">
+            ${sourceTemplate(section, optionNumber, 1)}
+          </div>
+          <div style="margin-top:16px;">
+            <button class="secondary add-source" type="button">Add another source</button>
+          </div>
+        </article>
+      `;
+    }
 
-        const removeBtn = node.querySelector('.remove-source-btn');
-        if (optionObj.sources.length <= 1) {
-          removeBtn.classList.add('hidden');
+    function selectTrack(track) {
+      selectedTrack = track;
+      const info = trackCopy[track];
+
+      document.querySelectorAll('.choice-card').forEach(card => {
+        const active = card.dataset.track === track;
+        card.classList.toggle('active', active);
+        card.setAttribute('aria-checked', active ? 'true' : 'false');
+      });
+
+      document.getElementById('trackNote').classList.remove('hidden');
+      document.getElementById('workspace').classList.remove('hidden');
+      document.getElementById('trackLabel').textContent = info.label;
+      document.getElementById('trackDescription').textContent = info.description;
+      document.getElementById('section2Title').textContent = info.section2Title;
+      document.getElementById('section2Intro').textContent = info.section2Intro;
+      document.getElementById('section3Title').textContent = info.highestTitle;
+
+      document.getElementById('section2Options').innerHTML = [1, 2].map(n => optionTemplate(2, n, `Option ${n}`, info.optionPlaceholder, false)).join('');
+      document.getElementById('section3Options').innerHTML = [1, 2].map(n => optionTemplate(3, n, `Advancement option ${n}`, info.highestPlaceholder, true)).join('');
+
+      attachDynamicListeners();
+      saveAll(false);
+      validateAllSources();
+      updateSummary();
+      document.getElementById('trackNote').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function attachDynamicListeners() {
+      fields().forEach(el => {
+        el.removeEventListener('input', handleInput);
+        el.removeEventListener('change', handleInput);
+        el.addEventListener('input', handleInput);
+        el.addEventListener('change', handleInput);
+      });
+
+      document.querySelectorAll('.add-source').forEach(btn => {
+        btn.onclick = () => {
+          const card = btn.closest('[data-option-card]');
+          const list = card.querySelector('.source-list');
+          const nextNumber = list.querySelectorAll('[data-source-card]').length + 1;
+          list.insertAdjacentHTML('beforeend', sourceTemplate(card.dataset.section, card.dataset.option, nextNumber));
+          attachDynamicListeners();
+          saveAll();
+          validateAllSources();
+          updateSummary();
+        };
+      });
+
+      document.querySelectorAll('.remove-source').forEach(btn => {
+        btn.onclick = () => {
+          const item = btn.closest('[data-source-card]');
+          const list = item.parentElement;
+          if (list.querySelectorAll('[data-source-card]').length > 1) {
+            item.remove();
+          } else {
+            item.querySelectorAll('input, select').forEach(el => el.value = '');
+          }
+          renumberSources(list);
+          attachDynamicListeners();
+          saveAll();
+          validateAllSources();
+          updateSummary();
+        };
+      });
+    }
+
+    function renumberSources(list) {
+      list.querySelectorAll('[data-source-card]').forEach((item, idx) => {
+        const sourceNumber = idx + 1;
+        item.dataset.source = sourceNumber;
+        item.querySelector('.kicker').textContent = `Source ${sourceNumber}`;
+        const head = item.querySelector('.source-head');
+        const existingRemove = item.querySelector('.remove-source');
+        if (sourceNumber === 1 && existingRemove) existingRemove.remove();
+        if (sourceNumber > 1 && !existingRemove) {
+          head.insertAdjacentHTML('beforeend', '<button class="danger remove-source" type="button">Remove source</button>');
         }
-        removeBtn.addEventListener('click', () => onRemoveSource(index));
-
-        const fieldsWrap = node.querySelector('.source-fields');
-
-        const titleId = `${prefix}_source_${index}_title`;
-        const linkId = `${prefix}_source_${index}_link`;
-        const typeId = `${prefix}_source_${index}_type`;
-        const infoId = `${prefix}_source_${index}_info`;
-
-        const titleField = document.createElement('div');
-        titleField.className = 'field';
-        titleField.innerHTML = `
-          <label for="${titleId}">Exact webpage title</label>
-          <input id="${titleId}" type="text" value="${escapeHtml(source.title || '')}" />
-        `;
-        titleField.querySelector('input').addEventListener('input', e => onUpdateSource(index, 'title', e.target.value));
-        fieldsWrap.appendChild(titleField);
-
-        const linkField = document.createElement('div');
-        linkField.className = 'field';
-        linkField.innerHTML = `
-          <label for="${linkId}">Exact page-specific link</label>
-          <input id="${linkId}" type="url" placeholder="https://" value="${escapeHtml(source.link || '')}" />
-        `;
-        linkField.querySelector('input').addEventListener('input', e => onUpdateSource(index, 'link', e.target.value));
-        fieldsWrap.appendChild(linkField);
-
-        const typeField = document.createElement('div');
-        typeField.className = 'field';
-        typeField.innerHTML = `<label for="${typeId}">What kind of page is this?</label>`;
-        const select = document.createElement('select');
-        select.id = typeId;
-        select.innerHTML = '<option value="">Select one</option>' + sourceTypes.map(type => `<option ${source.type === type ? 'selected' : ''}>${type}</option>`).join('');
-        select.addEventListener('change', e => onUpdateSource(index, 'type', e.target.value));
-        typeField.appendChild(select);
-        fieldsWrap.appendChild(typeField);
-
-        const infoField = document.createElement('div');
-        infoField.className = 'field';
-        infoField.style.gridColumn = '1 / -1';
-        infoField.innerHTML = `
-          <label for="${infoId}">What information did this page give you?</label>
-          <input id="${infoId}" type="text" value="${escapeHtml(source.info || '')}" />
-        `;
-        infoField.querySelector('input').addEventListener('input', e => onUpdateSource(index, 'info', e.target.value));
-        fieldsWrap.appendChild(infoField);
-
-        list.appendChild(node);
-      });
-
-      sourceCard.appendChild(list);
-
-      const addBtn = document.createElement('button');
-      addBtn.type = 'button';
-      addBtn.className = 'btn-secondary add-source-btn';
-      addBtn.style.marginTop = '12px';
-      addBtn.textContent = 'Add another source';
-      addBtn.addEventListener('click', onAddSource);
-      sourceCard.appendChild(addBtn);
-
-      container.appendChild(sourceCard);
-    }
-
-    function renderPart2(track) {
-      const cfg = tracks[track];
-      const options = state.part2[track] || [];
-      part2Options.innerHTML = '';
-
-      options.forEach((optionObj, idx) => {
-        const template = document.getElementById('optionCardTemplate');
-        const node = template.content.cloneNode(true);
-        const card = node.querySelector('.option-card');
-        const heading = node.querySelector('.option-heading');
-        const helper = node.querySelector('.option-helper');
-        const basicGroup = node.querySelector('.basic-group');
-        const costGroup = node.querySelector('.cost-group');
-
-        heading.textContent = `${cfg.part2OptionLabel} ${idx + 1}`;
-        helper.textContent = cfg.part2OptionHelper;
-
-        const basicLabel = document.createElement('span');
-        basicLabel.className = 'group-label';
-        basicLabel.textContent = 'Main information';
-        basicGroup.appendChild(basicLabel);
-
-        renderFields(
-          basicGroup,
-          cfg.part2BasicFields,
-          optionObj,
-          (key, value) => {
-            state.part2[track][idx][key] = value;
-            debouncedSave();
-          },
-          `p2_${track}_${idx}_basic`
-        );
-
-        const costLabel = document.createElement('span');
-        costLabel.className = 'group-label';
-        costLabel.textContent = 'Cost and funding';
-        costGroup.appendChild(costLabel);
-
-        renderFields(
-          costGroup,
-          cfg.part2CostFields,
-          optionObj,
-          (key, value) => {
-            state.part2[track][idx][key] = value;
-            debouncedSave();
-          },
-          `p2_${track}_${idx}_cost`
-        );
-
-        const costSourceNote = document.createElement('p');
-        costSourceNote.className = 'helper';
-        costSourceNote.style.marginTop = '12px';
-        costSourceNote.textContent = 'If you used different pages for cost, aid, or deadlines, list them in the source area below.';
-        costGroup.appendChild(costSourceNote);
-
-        renderSourceBlock(
-          card,
-          optionObj,
-          cfg.part2SourceTypes,
-          (sourceIndex, key, value) => {
-            state.part2[track][idx].sources[sourceIndex][key] = value;
-            debouncedSave();
-          },
-          () => {
-            state.part2[track][idx].sources.push(createEmptySource());
-            renderPart2(track);
-            saveState();
-          },
-          (sourceIndex) => {
-            state.part2[track][idx].sources.splice(sourceIndex, 1);
-            renderPart2(track);
-            saveState();
-          },
-          `p2_${track}_${idx}_sources`
-        );
-
-        part2Options.appendChild(card);
       });
     }
 
-    function renderPart3(track) {
-      const cfg = tracks[track];
-      const options = state.part3[track] || [];
-      part3Options.innerHTML = '';
-
-      options.forEach((optionObj, idx) => {
-        const template = document.getElementById('optionCardTemplate');
-        const node = template.content.cloneNode(true);
-        const card = node.querySelector('.option-card');
-        const heading = node.querySelector('.option-heading');
-        const helper = node.querySelector('.option-helper');
-        const basicGroup = node.querySelector('.basic-group');
-        const costGroup = node.querySelector('.cost-group');
-
-        heading.textContent = `${cfg.part3OptionLabel} ${idx + 1}`;
-        helper.textContent = cfg.part3OptionHelper;
-
-        const basicLabel = document.createElement('span');
-        basicLabel.className = 'group-label';
-        basicLabel.textContent = 'Main information';
-        basicGroup.appendChild(basicLabel);
-
-        renderFields(
-          basicGroup,
-          cfg.part3BasicFields,
-          optionObj,
-          (key, value) => {
-            state.part3[track][idx][key] = value;
-            debouncedSave();
-          },
-          `p3_${track}_${idx}_basic`
-        );
-
-        const costLabel = document.createElement('span');
-        costLabel.className = 'group-label';
-        costLabel.textContent = 'Cost and access';
-        costGroup.appendChild(costLabel);
-
-        renderFields(
-          costGroup,
-          cfg.part3CostFields,
-          optionObj,
-          (key, value) => {
-            state.part3[track][idx][key] = value;
-            debouncedSave();
-          },
-          `p3_${track}_${idx}_cost`
-        );
-
-        const costSourceNote = document.createElement('p');
-        costSourceNote.className = 'helper';
-        costSourceNote.style.marginTop = '12px';
-        costSourceNote.textContent = 'Use actual program, tuition, aid, benefits, licensing, union, or organization pages when possible, then list them below.';
-        costGroup.appendChild(costSourceNote);
-
-        renderSourceBlock(
-          card,
-          optionObj,
-          cfg.part3SourceTypes,
-          (sourceIndex, key, value) => {
-            state.part3[track][idx].sources[sourceIndex][key] = value;
-            debouncedSave();
-          },
-          () => {
-            state.part3[track][idx].sources.push(createEmptySource());
-            renderPart3(track);
-            saveState();
-          },
-          (sourceIndex) => {
-            state.part3[track][idx].sources.splice(sourceIndex, 1);
-            renderPart3(track);
-            saveState();
-          },
-          `p3_${track}_${idx}_sources`
-        );
-
-        part3Options.appendChild(card);
-      });
+    function handleInput() {
+      saveAll();
+      validateAllSources();
+      updateSummary();
     }
 
-    function escapeHtml(value) {
-      return String(value)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;');
+    function normalize(text) {
+      return (text || '').toLowerCase().trim();
     }
 
-    function buildSourcesText(sources) {
-      const filled = (sources || []).filter(src =>
-        (src.title || '').trim() ||
-        (src.link || '').trim() ||
-        (src.type || '').trim() ||
-        (src.info || '').trim()
-      );
-
-      if (!filled.length) return ['No sources listed yet.'];
-
-      const lines = [];
-      filled.forEach((src, idx) => {
-        lines.push(`Source ${idx + 1}`);
-        lines.push(`- Exact webpage title: ${src.title || ''}`);
-        lines.push(`- Exact page-specific link: ${src.link || ''}`);
-        lines.push(`- Page type: ${src.type || ''}`);
-        lines.push(`- What information this page gave you: ${src.info || ''}`);
-      });
-      return lines;
+    function isBadLibraryCareerPlanner(title, site, url) {
+      const combined = `${title} ${site} ${url}`.toLowerCase();
+      return combined.includes('career planner') || combined.includes('libguides') || combined.includes('libraryguides') || combined.includes('library.greenriver') || combined.includes('greenriver.libguides') || combined.includes('researchguides');
     }
 
-    function buildSummary() {
-      const track = resolvedTrack || (activeTrack !== 'notsure' ? activeTrack : '');
-      if (!track || !tracks[track]) {
-        return 'Choose a track and begin filling in the page. Your summary will appear here.';
+    function isLikelyHomepage(url) {
+      const value = (url || '').trim();
+      if (!value) return false;
+      try {
+        const parsed = new URL(value.startsWith('http') ? value : `https://${value}`);
+        const path = parsed.pathname.replace(/\/+$/, '').toLowerCase();
+        return path === '' || path === '/';
+      } catch (e) {
+        return false;
+      }
+    }
+
+    function hasGenericPageTitle(title) {
+      const t = normalize(title);
+      if (!t) return false;
+      const genericTitles = [
+        'home', 'homepage',
+        'program', 'programs',
+        'academic', 'academics',
+        'admission', 'admissions',
+        'apply', 'application', 'applications',
+        'undergraduate', 'undergrad', 'undergraduate programs',
+        'graduate', 'grad', 'graduate programs',
+        'degree', 'degrees',
+        'tuition', 'tuition and fees', 'tuition & fees', 'cost', 'costs',
+        'financial aid', 'financial aid and scholarships',
+        'scholarship', 'scholarships'
+      ];
+      return genericTitles.includes(t);
+    }
+
+    function validateSourceCard(card) {
+      const title = card.querySelector('[data-source-title]').value;
+      const site = card.querySelector('[data-source-site]').value;
+      const url = card.querySelector('[data-source-url]').value;
+      const message = card.querySelector('[data-validation-message]');
+      const problems = [];
+
+      if (isBadLibraryCareerPlanner(title, site, url)) {
+        problems.push('This source is blocked because it looks like the Library Career Planner or a library guide. Use the actual school, program, training center, union, military branch, licensing body, or organization page instead.');
       }
 
-      const cfg = tracks[track];
-      const lines = [];
-
-      lines.push('WEEK 1 CAREER PATH TIMELINE WORKSHEET');
-      lines.push('');
-      lines.push(`Selected track: ${cfg.label}`);
-
-      if (activeTrack === 'notsure') {
-        lines.push('');
-        lines.push('NOT SURE YET REFLECTION');
-        lines.push(`Path chosen for this assignment: ${getField('notsurePath')}`);
-        lines.push(`How sure are you: ${getField('notsureConfidence')}`);
-        lines.push(`Why you chose this path for now: ${getField('notsureReason')}`);
+      if (isLikelyHomepage(url)) {
+        problems.push('This URL looks like a homepage or broad landing page. Use the exact page where the information appears, such as program requirements, admissions requirements, tuition and fees, scholarship information, application steps, or license requirements.');
       }
 
-      lines.push('');
-      lines.push('SECTION 1: CURRENT ACADEMIC STANDING');
-      lines.push(`Program name: ${getField('currentProgram')}`);
-      lines.push(`School name: ${getField('currentSchool')}`);
-      lines.push(`Career or field: ${getField('careerGoal')}`);
-      lines.push(`Current stage: ${getField('currentStage')}`);
-      lines.push(`Key courses, experiences, or skills gained so far: ${getField('skillsHave')}`);
-      lines.push(`Key courses, experiences, or skills still needed: ${getField('skillsNeed')}`);
-      lines.push(`Transfer plan or next-step plan: ${getField('transferPlan')}`);
-      lines.push(`Relevant extracurriculars, internships, work, military experience, volunteering, or other experience: ${getField('currentConnections')}`);
+      if (hasGenericPageTitle(title) && isLikelyHomepage(url)) {
+        problems.push('This source looks like the main landing page for the whole website. Use a page with something after the main website address, like /admissions, /programs, /tuition, or a more specific program page.');
+      }
 
-      lines.push('');
-      lines.push(`SECTION 2: ${cfg.part2Title.toUpperCase()}`);
+      card.classList.toggle('invalid', problems.length > 0);
+      message.textContent = problems.join(' ');
+      return problems.length === 0;
+    }
 
-      (state.part2[track] || []).forEach((optionObj, idx) => {
-        lines.push('');
-        lines.push(`${cfg.part2OptionLabel.toUpperCase()} ${idx + 1}`);
+    function validateAllSources() {
+      const cards = Array.from(document.querySelectorAll('[data-source-card]'));
+      const allValid = cards.every(validateSourceCard);
+      const hasInvalid = !allValid;
+      sourceBlocker.classList.toggle('show', hasInvalid);
+      summaryBlocker.classList.toggle('show', hasInvalid);
+      printBtn.disabled = hasInvalid;
+      if (hasInvalid) saveStatus.textContent = 'Source check: fix the blocked source before printing or saving as a PDF.';
+      return allValid;
+    }
 
-        lines.push('Main information');
-        cfg.part2BasicFields.forEach(([label, key]) => {
-          lines.push(`- ${label}: ${optionObj[key] || ''}`);
-        });
+    function val(id) {
+      const el = document.getElementById(id);
+      return el ? el.value.trim() : '';
+    }
 
-        lines.push('Cost and funding');
-        cfg.part2CostFields.forEach(([label, key]) => {
-          lines.push(`- ${label}: ${optionObj[key] || ''}`);
-        });
-
-        lines.push('Sources used');
-        buildSourcesText(optionObj.sources).forEach(line => lines.push(line));
-      });
-
-      lines.push('');
-      lines.push(`SECTION 3: ${cfg.part3Title.toUpperCase()}`);
-
-      (state.part3[track] || []).forEach((optionObj, idx) => {
-        lines.push('');
-        lines.push(`${cfg.part3OptionLabel.toUpperCase()} ${idx + 1}`);
-
-        lines.push('Main information');
-        cfg.part3BasicFields.forEach(([label, key]) => {
-          lines.push(`- ${label}: ${optionObj[key] || ''}`);
-        });
-
-        lines.push('Cost and access');
-        cfg.part3CostFields.forEach(([label, key]) => {
-          lines.push(`- ${label}: ${optionObj[key] || ''}`);
-        });
-
-        lines.push('Sources used');
-        buildSourcesText(optionObj.sources).forEach(line => lines.push(line));
-      });
-
-      lines.push('');
-      lines.push('REFLECTION');
-      lines.push(`What surprised you most: ${getField('highestLevelReflection')}`);
-
-      return lines.join('\n');
+    function sourceLines(card) {
+      return Array.from(card.querySelectorAll('[data-source-card]')).map((item, idx) => {
+        const title = item.querySelector('[data-source-title]').value.trim();
+        const site = item.querySelector('[data-source-site]').value.trim();
+        const url = item.querySelector('[data-source-url]').value.trim();
+        const purpose = item.querySelector('[data-source-purpose]').value.trim();
+        if (!title && !site && !url && !purpose) return '';
+        return `  Source ${idx + 1}:\n  Webpage title: ${title || '[not entered]'}\n  Website name: ${site || '[not entered]'}\n  Exact URL: ${url || '[not entered]'}\n  Information used: ${purpose || '[not entered]'}`;
+      }).filter(Boolean).join('\n');
     }
 
     function updateSummary() {
-      summaryOutput.textContent = buildSummary();
-    }
-
-    function percentComplete(ids) {
-      const done = ids.filter(id => getField(id)).length;
-      return ids.length ? Math.round((done / ids.length) * 100) : 0;
-    }
-
-    function progressForOptionSet(optionSet, fieldLists) {
-      if (!optionSet || !optionSet.length) return 0;
-      let total = 0;
-      let done = 0;
-
-      optionSet.forEach(option => {
-        fieldLists.flat().forEach(([, key]) => {
-          total++;
-          if ((option[key] || '').trim()) done++;
-        });
-
-        (option.sources || []).forEach(source => {
-          ['title', 'link', 'type', 'info'].forEach(key => {
-            total++;
-            if ((source[key] || '').trim()) done++;
-          });
-        });
-      });
-
-      return total ? Math.round((done / total) * 100) : 0;
-    }
-
-    function updateProgress() {
-      const p1 = percentComplete([
-        'currentProgram',
-        'currentSchool',
-        'careerGoal',
-        'currentStage',
-        'skillsHave',
-        'skillsNeed',
-        'transferPlan',
-        'currentConnections'
-      ]);
-
-      const track = resolvedTrack || (activeTrack !== 'notsure' ? activeTrack : '');
-      const p2 = track && tracks[track]
-        ? progressForOptionSet(state.part2[track], [tracks[track].part2BasicFields, tracks[track].part2CostFields])
-        : 0;
-
-      const p3 = track && tracks[track]
-        ? progressForOptionSet(state.part3[track], [tracks[track].part3BasicFields, tracks[track].part3CostFields])
-        : 0;
-
-      const p4 = track ? 100 : 0;
-
-      document.getElementById('prog1').style.width = p1 + '%';
-      document.getElementById('prog2').style.width = p2 + '%';
-      document.getElementById('prog3').style.width = p3 + '%';
-      document.getElementById('prog4').style.width = p4 + '%';
-    }
-
-    document.getElementById('copySummaryBtn').addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(buildSummary());
-        saveStatus.textContent = 'Copied your Week 1 notes.';
-      } catch {
-        saveStatus.textContent = 'Could not copy automatically. You can still highlight and copy the summary box.';
-      }
-    });
-
-    document.getElementById('downloadTxtBtn').addEventListener('click', () => {
-      const blob = new Blob([buildSummary()], { type: 'text/plain;charset=utf-8' });
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'week1-career-path-notes.txt';
-      a.click();
-      URL.revokeObjectURL(a.href);
-      saveStatus.textContent = 'Downloaded your notes as a text file.';
-    });
-
-    document.getElementById('printBtn').addEventListener('click', () => window.print());
-
-    applyNotsurePathBtn.addEventListener('click', () => {
-      const chosen = document.getElementById('notsurePath').value;
-      if (!chosen) {
-        alert('Choose one path to explore first.');
+      if (!selectedTrack) {
+        summaryOutput.textContent = 'Choose a path to begin.';
         return;
       }
-      resolvedTrack = chosen;
-      state.resolvedTrack = chosen;
-      renderTrack(chosen);
-      saveState();
-    });
 
-    trackGrid.querySelectorAll('.track-option').forEach(option => {
-      option.addEventListener('click', () => setTrack(option.dataset.track));
-      option.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          setTrack(option.dataset.track);
-        }
+      const lines = [];
+      lines.push('Week 1 Career Path Research Notes');
+      lines.push('');
+      lines.push(`Selected path: ${trackCopy[selectedTrack].label}`);
+      lines.push('');
+      lines.push('Section 1: Current Academic Standing');
+      lines.push(`Current program: ${val('currentProgram')}`);
+      lines.push(`Current school: ${val('currentSchool')}`);
+      lines.push(`Career or field: ${val('careerGoal')}`);
+      lines.push(`Current stage: ${val('currentStage')}`);
+      lines.push('');
+      lines.push('Section 2: Next-Step Options');
+
+      document.querySelectorAll('#section2Options [data-option-card]').forEach((card, idx) => {
+        const n = idx + 1;
+        lines.push(`Option ${n}: ${val(`next${n}Name`)}`);
+        lines.push(`Length or timeline: ${val(`next${n}Length`)}`);
+        lines.push(`${trackCopy[selectedTrack].requirementsLabel}: ${val(`next${n}Req`)}`);
+        if (trackCopy[selectedTrack].deadlineLabel) lines.push(`${trackCopy[selectedTrack].deadlineLabel}: ${val(`next${n}Deadline`)}`);
+        lines.push(`Cost, funding, scholarships, aid, or support: ${val(`next${n}Cost`)}`);
+        lines.push(sourceLines(card));
+        lines.push('');
       });
+
+      lines.push('Section 3: Highest Level or Advancement');
+      document.querySelectorAll('#section3Options [data-option-card]').forEach((card, idx) => {
+        const n = idx + 1;
+        lines.push(`Highest-level option ${n}: ${val(`high${n}Name`)}`);
+        lines.push(`Length or timeline: ${val(`high${n}Length`)}`);
+        lines.push(`${trackCopy[selectedTrack].requirementsLabel}: ${val(`high${n}Req`)}`);
+        if (trackCopy[selectedTrack].deadlineLabel) lines.push(`${trackCopy[selectedTrack].deadlineLabel}: ${val(`high${n}Deadline`)}`);
+        lines.push(`Cost, funding, scholarships, aid, or support: ${val(`high${n}Cost`)}`);
+        lines.push(sourceLines(card));
+        lines.push('');
+      });
+      lines.push(`Reflection: ${val('reflection')}`);
+      summaryOutput.textContent = lines.join('\n');
+    }
+
+    function saveAll(showSaved = true) {
+      const data = { selectedTrack, values: {} };
+      fields().forEach((el, idx) => {
+        if (!el.id) el.id = `autoField_${idx}`;
+        data.values[el.id] = el.value;
+      });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      if (showSaved) saveStatus.textContent = 'Saved in this browser.';
+    }
+
+    function loadAll() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      try {
+        const data = JSON.parse(raw);
+        if (data.selectedTrack) selectTrack(data.selectedTrack);
+        Object.entries(data.values || {}).forEach(([id, value]) => {
+          const el = document.getElementById(id);
+          if (el) el.value = value;
+        });
+        validateAllSources();
+        updateSummary();
+      } catch (e) {}
+    }
+
+    document.getElementById('trackGrid').addEventListener('click', e => {
+      const card = e.target.closest('[data-track]');
+      if (card) selectTrack(card.dataset.track);
     });
 
-    wireGlobalInputs();
-    initTheme();
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      localStorage.setItem(THEME_KEY, isDark ? 'dark' : 'light');
+      document.getElementById('themeToggle').textContent = isDark ? 'Light mode' : 'Dark mode';
+    });
 
-    if (activeTrack) {
-      setTrack(activeTrack);
-      if (activeTrack === 'notsure' && resolvedTrack) renderTrack(resolvedTrack);
-    } else {
+
+    printBtn.addEventListener('click', () => {
+      if (!validateAllSources()) return;
       updateSummary();
-      updateProgress();
+      window.print();
+    });
+
+    const savedTheme = localStorage.getItem(THEME_KEY);
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark');
+      document.getElementById('themeToggle').textContent = 'Light mode';
     }
+
+    loadAll();
   </script>
 </body>
 </html>
