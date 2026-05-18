@@ -559,20 +559,162 @@
       * { scroll-behavior: auto !important; transition: none !important; }
     }
 
+    .print-submission {
+      display: none;
+    }
+
     @media print {
-      body, body.dark { background: white !important; color: black !important; font-size: 12pt; }
-      .screen-only, .tool-strip, .side-nav, .track-grid, .remove-source, .add-source { display: none !important; }
-      .hero-main, .hero-card, .section, .track-note, .final-card, .option-card, .source-card, .summary-output {
-        box-shadow: none !important;
-        background: white !important;
-        border: 1px solid #bbb !important;
-        color: black !important;
+      @page {
+        margin: 0.55in;
       }
-      .page { max-width: none; padding: 0; }
-      .hero { grid-template-columns: 1fr; }
-      .workspace { display: block; }
-      .option-card, .source-card, .final-card { page-break-inside: avoid; }
-      .print-only { display: block; }
+
+      * {
+        box-shadow: none !important;
+        text-shadow: none !important;
+      }
+
+      html,
+      body,
+      body.dark {
+        background: #ffffff !important;
+        color: #000000 !important;
+        font-size: 11pt;
+        line-height: 1.35;
+      }
+
+      body > .page {
+        display: none !important;
+      }
+
+      .print-submission {
+        display: block !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #ffffff !important;
+        color: #000000 !important;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .print-submission * {
+        color: #000000 !important;
+        background: transparent !important;
+      }
+
+      .print-header {
+        border-bottom: 2px solid #000000;
+        padding-bottom: 10pt;
+        margin-bottom: 14pt;
+      }
+
+      .print-header h1 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 18pt;
+        line-height: 1.15;
+        letter-spacing: 0;
+        margin: 0 0 6pt;
+      }
+
+      .print-meta {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8pt 18pt;
+        font-size: 10.5pt;
+      }
+
+      .print-section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        border: 1px solid #9a9a9a;
+        padding: 10pt 11pt;
+        margin: 0 0 12pt;
+      }
+
+      .print-section h2 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14pt;
+        line-height: 1.2;
+        letter-spacing: 0;
+        border-bottom: 1px solid #b7b7b7;
+        padding-bottom: 5pt;
+        margin: 0 0 8pt;
+      }
+
+      .print-section h3 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 12pt;
+        line-height: 1.2;
+        letter-spacing: 0;
+        margin: 10pt 0 5pt;
+      }
+
+      .print-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 7pt 12pt;
+      }
+
+      .print-field {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        margin-bottom: 7pt;
+      }
+
+      .print-field.full {
+        grid-column: 1 / -1;
+      }
+
+      .print-label {
+        display: block;
+        font-size: 9pt;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        margin-bottom: 2pt;
+      }
+
+      .print-answer {
+        min-height: 18pt;
+        border: 1px solid #c8c8c8;
+        padding: 5pt 6pt;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+      }
+
+      .print-answer.empty {
+        color: #777777 !important;
+      }
+
+      .print-source {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        border-left: 3px solid #444444;
+        padding: 6pt 0 2pt 8pt;
+        margin: 6pt 0 7pt;
+      }
+
+      .print-source h4 {
+        font-size: 10.5pt;
+        margin: 0 0 4pt;
+      }
+
+      .print-note {
+        font-size: 9.5pt;
+        border-top: 1px solid #b7b7b7;
+        padding-top: 6pt;
+        margin-top: 10pt;
+      }
+
+      .print-error {
+        border: 2px solid #000000;
+        padding: 12pt;
+        font-weight: 700;
+      }
+
+      .print-only {
+        display: block !important;
+      }
     }
   </style>
 </head>
@@ -695,6 +837,23 @@
       </main>
     </div>
   </div>
+
+  <section class="print-submission" id="printSubmission" aria-label="Printable worksheet submission">
+    <div class="print-header">
+      <h1>Week 1 Career Path Research Notes</h1>
+      <div class="print-meta">
+        <div><strong>Name:</strong> ________________________________</div>
+        <div><strong>Date:</strong> ________________________________</div>
+        <div><strong>Selected path:</strong> <span id="printSelectedPath">Not selected</span></div>
+        <div><strong>Career or field:</strong> <span id="printCareerField">Not entered</span></div>
+      </div>
+    </div>
+    <div id="printContent">
+      <div class="print-error">Choose a path and complete the worksheet before printing.</div>
+    </div>
+    <div class="print-note">Prepared from the Week 1 Career Path Research page. This print version includes only the work needed for review and grading.</div>
+  </section>
+
 
   <script>
     const STORAGE_KEY = 'career_path_week1_microsite_test_v1';
@@ -1021,6 +1180,127 @@
       }).filter(Boolean).join('\n');
     }
 
+
+    function printSafe(value) {
+      return String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function printableAnswer(value) {
+      const clean = String(value || '').trim();
+      if (!clean) return '<div class="print-answer empty">Not entered</div>';
+      return `<div class="print-answer">${printSafe(clean)}</div>`;
+    }
+
+    function printableField(label, value, full = false) {
+      return `
+        <div class="print-field${full ? ' full' : ''}">
+          <span class="print-label">${printSafe(label)}</span>
+          ${printableAnswer(value)}
+        </div>
+      `;
+    }
+
+    function printableSources(card) {
+      const sources = Array.from(card.querySelectorAll('[data-source-card]')).map((item, idx) => {
+        const title = item.querySelector('[data-source-title]').value.trim();
+        const site = item.querySelector('[data-source-site]').value.trim();
+        const url = item.querySelector('[data-source-url]').value.trim();
+        const purpose = item.querySelector('[data-source-purpose]').value.trim();
+        if (!title && !site && !url && !purpose) return '';
+        return `
+          <div class="print-source">
+            <h4>Source ${idx + 1}</h4>
+            ${printableField('Webpage title', title)}
+            ${printableField('Website name', site)}
+            ${printableField('Exact URL', url, true)}
+            ${printableField('Information used from this page', purpose, true)}
+          </div>
+        `;
+      }).filter(Boolean).join('');
+
+      return sources || '<div class="print-source"><h4>Sources</h4><div class="print-answer empty">No source information entered</div></div>';
+    }
+
+    function updatePrintableSubmission() {
+      const printContent = document.getElementById('printContent');
+      document.getElementById('printSelectedPath').textContent = selectedTrack ? trackCopy[selectedTrack].label : 'Not selected';
+      document.getElementById('printCareerField').textContent = val('careerGoal') || 'Not entered';
+
+      if (!selectedTrack) {
+        printContent.innerHTML = '<div class="print-error">Choose a path and complete the worksheet before printing.</div>';
+        return;
+      }
+
+      const sourceCheck = validateAllSources();
+      if (!sourceCheck) {
+        printContent.innerHTML = '<div class="print-error">One or more sources are blocked. Fix the source entries before saving the worksheet as a PDF.</div>';
+        return;
+      }
+
+      let html = '';
+      html += `
+        <section class="print-section">
+          <h2>Section 1: Current Academic Standing</h2>
+          <div class="print-grid">
+            ${printableField('Current program', val('currentProgram'))}
+            ${printableField('Current school', val('currentSchool'))}
+            ${printableField('Career or field', val('careerGoal'))}
+            ${printableField('Current stage', val('currentStage'))}
+          </div>
+        </section>
+      `;
+
+      html += `
+        <section class="print-section">
+          <h2>Section 2: Next-Step Options</h2>
+      `;
+      document.querySelectorAll('#section2Options [data-option-card]').forEach((card, idx) => {
+        const n = idx + 1;
+        html += `
+          <h3>Option ${n}</h3>
+          <div class="print-grid">
+            ${printableField(trackCopy[selectedTrack].optionName, val(`next${n}Name`))}
+            ${printableField('Length or timeline', val(`next${n}Length`))}
+            ${printableField(trackCopy[selectedTrack].requirementsLabel, val(`next${n}Req`), true)}
+            ${trackCopy[selectedTrack].deadlineLabel ? printableField(trackCopy[selectedTrack].deadlineLabel, val(`next${n}Deadline`)) : ''}
+            ${printableField('Cost, funding, scholarships, aid, or support', val(`next${n}Cost`), true)}
+          </div>
+          ${printableSources(card)}
+        `;
+      });
+      html += '</section>';
+
+      html += `
+        <section class="print-section">
+          <h2>Section 3: Highest Level or Advancement</h2>
+      `;
+      document.querySelectorAll('#section3Options [data-option-card]').forEach((card, idx) => {
+        const n = idx + 1;
+        html += `
+          <h3>Highest-level option ${n}</h3>
+          <div class="print-grid">
+            ${printableField(trackCopy[selectedTrack].highestTitle, val(`high${n}Name`))}
+            ${printableField('Length or timeline', val(`high${n}Length`))}
+            ${printableField(trackCopy[selectedTrack].requirementsLabel, val(`high${n}Req`), true)}
+            ${trackCopy[selectedTrack].deadlineLabel ? printableField(trackCopy[selectedTrack].deadlineLabel, val(`high${n}Deadline`)) : ''}
+            ${printableField('Cost, funding, scholarships, aid, or support', val(`high${n}Cost`), true)}
+          </div>
+          ${printableSources(card)}
+        `;
+      });
+      html += `
+          ${printableField('Reflection: What surprised you most?', val('reflection'), true)}
+        </section>
+      `;
+
+      printContent.innerHTML = html;
+    }
+
     function updateSummary() {
       if (!selectedTrack) {
         summaryOutput.textContent = 'Choose a path to begin.';
@@ -1107,7 +1387,13 @@
     printBtn.addEventListener('click', () => {
       if (!validateAllSources()) return;
       updateSummary();
+      updatePrintableSubmission();
       window.print();
+    });
+
+    window.addEventListener('beforeprint', () => {
+      updateSummary();
+      updatePrintableSubmission();
     });
 
     const savedTheme = localStorage.getItem(THEME_KEY);
@@ -1117,6 +1403,7 @@
     }
 
     loadAll();
+    updatePrintableSubmission();
   </script>
 </body>
 </html>
